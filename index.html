@@ -3,678 +3,935 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>●●株式会社 | 技術で未来をつくる</title>
-  <meta name="description" content="DX推進・3次元設計・建設測量の技術力で社会インフラを支える●●株式会社。若い力と最先端テクノロジーで未来を切り拓きます。">
+  <title>●●建設コンサルタント株式会社</title>
+  <meta name="description" content="BIM/CIM・3次元設計・ドローン測量・DX推進——最先端技術で社会インフラを支える建設コンサルタント。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- ナビゲーション -->
-  <nav class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#" class="nav__logo">
-        <span class="nav__logo-mark">●</span>
-        <span class="nav__logo-text">●●エンジニアリング</span>
-      </a>
-      <button class="nav__hamburger" id="hamburger" aria-label="メニュー">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__list" id="navList">
-        <li><a href="#about" class="nav__link">会社概要</a></li>
-        <li><a href="#technology" class="nav__link">技術・サービス</a></li>
-        <li><a href="#works" class="nav__link">実績</a></li>
-        <li><a href="#recruit" class="nav__link">採用情報</a></li>
-        <li><a href="#contact" class="nav__link nav__link--cta">お問い合わせ</a></li>
+<!-- ========== HEADER ========== -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#" class="logo">
+      <div class="logo__mark">
+        <svg viewBox="0 0 36 36" fill="none">
+          <polygon points="18,3 33,30 3,30" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+          <line x1="18" y1="12" x2="18" y2="26" stroke="#FF6B2B" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="18" cy="10" r="2.5" fill="#FF6B2B"/>
+        </svg>
+      </div>
+      <div class="logo__text">
+        <span class="logo__name">●●建設コンサルタント</span>
+        <span class="logo__sub">株式会社</span>
+      </div>
+    </a>
+    <nav class="gnav">
+      <ul class="gnav__list">
+        <li><a href="#about">私たちについて</a></li>
+        <li><a href="#service">事業内容</a></li>
+        <li><a href="#technology">技術・DX</a></li>
+        <li><a href="#works">実績</a></li>
+        <li><a href="#recruit">採用情報</a></li>
       </ul>
-    </div>
-  </nav>
+      <a href="#contact" class="gnav__cta">お問い合わせ</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#technology">技術・DX</a></li>
+      <li><a href="#works">実績</a></li>
+      <li><a href="#recruit">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+</header>
 
-  <!-- ヒーロー -->
-  <section class="hero" id="hero">
-    <div class="hero__bg">
-      <div class="hero__grid"></div>
-      <div class="hero__blob hero__blob--1"></div>
-      <div class="hero__blob hero__blob--2"></div>
-      <div class="hero__blob hero__blob--3"></div>
-      <div class="hero__particles" id="particles"></div>
-    </div>
-    <div class="hero__content">
-      <p class="hero__eyebrow reveal">ENGINEERING × DIGITAL TRANSFORMATION</p>
-      <h1 class="hero__title reveal">
-        技術で、<br>
-        <span class="hero__title--accent">未来の社会</span>を<br>
-        設計する。
-      </h1>
-      <p class="hero__desc reveal">
-        3次元設計・DX推進・建設測量——<br>
-        最先端の技術と若い発想で、<br>社会インフラの未来を切り拓いています。
-      </p>
-      <div class="hero__actions reveal">
-        <a href="#recruit" class="btn btn--primary">採用情報を見る</a>
-        <a href="#technology" class="btn btn--outline">技術を見る</a>
-      </div>
-    </div>
-    <div class="hero__scroll">
-      <span>SCROLL</span>
-      <div class="hero__scroll-line"></div>
-    </div>
-    <div class="hero__stats">
-      <div class="hero__stat reveal">
-        <span class="hero__stat-num">30<small>+</small></span>
-        <span class="hero__stat-label">年の実績</span>
-      </div>
-      <div class="hero__stat reveal">
-        <span class="hero__stat-num">500<small>+</small></span>
-        <span class="hero__stat-label">プロジェクト</span>
-      </div>
-      <div class="hero__stat reveal">
-        <span class="hero__stat-num">100<small>%</small></span>
-        <span class="hero__stat-label">BIM/CIM対応</span>
-      </div>
-    </div>
-  </section>
+<!-- ========== HERO ========== -->
+<section class="hero" id="top">
+  <div class="hero__bg">
+    <!-- SVG 橋梁シルエット -->
+    <svg class="hero__scene" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- sky gradient -->
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="560" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#0B2545"/>
+          <stop offset="100%" stop-color="#1B4F8A"/>
+        </linearGradient>
+        <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="80" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#1B4F8A" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#0B2545" stop-opacity="0.5"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <rect width="1440" height="560" fill="url(#sky)"/>
 
-  <!-- NEWS TICKER -->
-  <div class="ticker">
-    <div class="ticker__label">NEWS</div>
-    <div class="ticker__track">
-      <div class="ticker__inner">
-        <span>2025年4月 — 新卒採用エントリー開始</span>
-        <span>3次元設計チームが国土交通省BIM/CIM優秀賞を受賞</span>
-        <span>ドローン測量部門を新設しました</span>
-        <span>働き方改革推進でフレックス制度導入</span>
-        <span>2025年4月 — 新卒採用エントリー開始</span>
-        <span>3次元設計チームが国土交通省BIM/CIM優秀賞を受賞</span>
-        <span>ドローン測量部門を新設しました</span>
-        <span>働き方改革推進でフレックス制度導入</span>
-      </div>
+      <!-- stars -->
+      <g fill="white" opacity="0.4">
+        <circle cx="120" cy="60" r="1.2"/><circle cx="320" cy="40" r="0.9"/><circle cx="480" cy="80" r="1.4"/>
+        <circle cx="640" cy="30" r="0.8"/><circle cx="850" cy="55" r="1.1"/><circle cx="1050" cy="35" r="1.3"/>
+        <circle cx="1200" cy="70" r="0.9"/><circle cx="1380" cy="45" r="1.2"/><circle cx="200" cy="120" r="0.7"/>
+        <circle cx="400" cy="100" r="1.0"/><circle cx="700" cy="90" r="0.8"/><circle cx="950" cy="110" r="1.1"/>
+        <circle cx="1100" cy="85" r="0.9"/><circle cx="1320" cy="100" r="0.7"/>
+      </g>
+
+      <!-- moon / light source -->
+      <circle cx="1100" cy="90" r="40" fill="white" opacity="0.06"/>
+      <circle cx="1100" cy="90" r="25" fill="white" opacity="0.08"/>
+
+      <!-- bridge towers -->
+      <rect x="400" y="180" width="28" height="280" fill="#1a3a6e"/>
+      <rect x="1012" y="180" width="28" height="280" fill="#1a3a6e"/>
+      <!-- tower caps -->
+      <polygon points="400,180 414,160 428,180" fill="#2255a0"/>
+      <polygon points="1012,180 1026,160 1040,180" fill="#2255a0"/>
+      <!-- cross beams -->
+      <rect x="400" y="240" width="28" height="14" fill="#2255a0"/>
+      <rect x="400" y="310" width="28" height="14" fill="#2255a0"/>
+      <rect x="1012" y="240" width="28" height="14" fill="#2255a0"/>
+      <rect x="1012" y="310" width="28" height="14" fill="#2255a0"/>
+
+      <!-- main cables -->
+      <path d="M 100 400 Q 414 200 720 340 Q 1026 200 1340 400" stroke="#4a7cc7" stroke-width="3" fill="none" filter="url(#glow)"/>
+      <path d="M 100 400 Q 414 200 720 340 Q 1026 200 1340 400" stroke="rgba(74,124,199,0.3)" stroke-width="8" fill="none"/>
+
+      <!-- hanger cables -->
+      <g stroke="#3a6ab5" stroke-width="1.2" opacity="0.7">
+        <line x1="200" y1="390" x2="230" y2="355"/>
+        <line x1="280" y1="372" x2="300" y2="348"/>
+        <line x1="350" y1="358" x2="365" y2="337"/>
+        <line x1="414" y1="320" x2="414" y2="300"/>
+        <line x1="480" y1="335" x2="475" y2="315"/>
+        <line x1="545" y1="338" x2="538" y2="318"/>
+        <line x1="608" y1="340" x2="600" y2="320"/>
+        <line x1="660" y1="341" x2="652" y2="322"/>
+        <line x1="720" y1="342" x2="720" y2="320"/>
+        <line x1="775" y1="341" x2="780" y2="320"/>
+        <line x1="830" y1="340" x2="838" y2="318"/>
+        <line x1="895" y1="338" x2="905" y2="316"/>
+        <line x1="960" y1="335" x2="973" y2="314"/>
+        <line x1="1026" y1="320" x2="1026" y2="300"/>
+        <line x1="1085" y1="337" x2="1075" y2="315"/>
+        <line x1="1150" y1="358" x2="1138" y2="336"/>
+        <line x1="1210" y1="372" x2="1195" y2="348"/>
+        <line x1="1270" y1="388" x2="1252" y2="355"/>
+      </g>
+
+      <!-- bridge deck -->
+      <rect x="80" y="400" width="1280" height="18" fill="#1a3a6e"/>
+      <rect x="80" y="416" width="1280" height="5" fill="#2255a0" opacity="0.5"/>
+
+      <!-- road markings -->
+      <g stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-dasharray="40 25">
+        <line x1="80" y1="409" x2="1360" y2="409"/>
+      </g>
+
+      <!-- water / reflection -->
+      <rect x="0" y="460" width="1440" height="100" fill="url(#waterGrad)"/>
+      <!-- water lines -->
+      <g stroke="rgba(255,255,255,0.08)" stroke-width="1.5">
+        <path d="M 50 480 Q 200 475 350 482 Q 500 490 650 480"/>
+        <path d="M 700 490 Q 900 483 1100 490 Q 1250 496 1400 488"/>
+        <path d="M 0 510 Q 300 504 600 512 Q 900 520 1200 510 Q 1350 506 1440 514"/>
+      </g>
+      <!-- reflection of bridge -->
+      <path d="M 100 460 Q 414 510 720 475 Q 1026 510 1340 460" stroke="rgba(74,124,199,0.2)" stroke-width="2" fill="none"/>
+
+      <!-- city silhouette far -->
+      <g fill="#0e2e5a">
+        <rect x="0" y="360" width="80" height="100"/>
+        <rect x="50" y="340" width="40" height="120"/>
+        <rect x="1350" y="350" width="90" height="110"/>
+        <rect x="1380" y="330" width="50" height="130"/>
+      </g>
+
+      <!-- foreground road -->
+      <rect x="0" y="430" width="1440" height="30" fill="#0B2545"/>
+
+      <!-- light streaks on bridge -->
+      <g opacity="0.5" filter="url(#glow)">
+        <circle cx="200" cy="408" r="3" fill="#FF6B2B"/>
+        <circle cx="350" cy="408" r="3" fill="#FF6B2B"/>
+        <circle cx="500" cy="408" r="3" fill="#FF6B2B"/>
+        <circle cx="650" cy="408" r="3" fill="#FF6B2B"/>
+        <circle cx="800" cy="408" r="3" fill="#FF6B2B"/>
+        <circle cx="950" cy="408" r="3" fill="#FF6B2B"/>
+        <circle cx="1100" cy="408" r="3" fill="#FF6B2B"/>
+        <circle cx="1250" cy="408" r="3" fill="#FF6B2B"/>
+      </g>
+
+      <!-- BIM grid overlay top-right -->
+      <g opacity="0.07" stroke="#6aabff" stroke-width="0.8">
+        <line x1="900" y1="0" x2="900" y2="300"/>
+        <line x1="960" y1="0" x2="960" y2="300"/>
+        <line x1="1020" y1="0" x2="1020" y2="300"/>
+        <line x1="1080" y1="0" x2="1080" y2="300"/>
+        <line x1="1140" y1="0" x2="1140" y2="300"/>
+        <line x1="1200" y1="0" x2="1200" y2="300"/>
+        <line x1="1260" y1="0" x2="1260" y2="300"/>
+        <line x1="850" y1="0" x2="1350" y2="0"/>
+        <line x1="850" y1="60" x2="1350" y2="60"/>
+        <line x1="850" y1="120" x2="1350" y2="120"/>
+        <line x1="850" y1="180" x2="1350" y2="180"/>
+        <line x1="850" y1="240" x2="1350" y2="240"/>
+        <line x1="850" y1="300" x2="1350" y2="300"/>
+      </g>
+    </svg>
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__content">
+    <div class="hero__label">建設コンサルタント × デジタルトランスフォーメーション</div>
+    <h1 class="hero__title">
+      未来の社会を<br>
+      <em>設計する</em>、<br>
+      技術がある。
+    </h1>
+    <p class="hero__desc">
+      3次元設計・BIM/CIM・ドローン測量——<br>
+      最先端のデジタル技術と豊かな現場経験で、<br>
+      道路・橋梁・河川など社会を支えるインフラを創り続けます。
+    </p>
+    <div class="hero__btns">
+      <a href="#service" class="btn btn--hero-primary">事業内容を見る</a>
+      <a href="#recruit" class="btn btn--hero-outline">採用情報</a>
     </div>
   </div>
 
-  <!-- ABOUT -->
-  <section class="section about" id="about">
-    <div class="container">
-      <div class="about__layout">
-        <div class="about__visual reveal">
-          <div class="about__img-wrap">
-            <div class="about__img about__img--main">
-              <div class="about__img-inner img-placeholder img-placeholder--blue">
-                <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="400" height="300" fill="url(#grad1)"/>
-                  <defs>
-                    <linearGradient id="grad1" x1="0" y1="0" x2="400" y2="300" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#0f3460"/>
-                      <stop offset="100%" stop-color="#16213e"/>
-                    </linearGradient>
-                  </defs>
-                  <!-- 3D wireframe building -->
-                  <g stroke="#00d4ff" stroke-width="1.5" opacity="0.8">
-                    <polygon points="200,40 320,110 320,220 200,290 80,220 80,110" fill="none"/>
-                    <line x1="200" y1="40" x2="200" y2="150"/>
-                    <line x1="200" y1="150" x2="320" y2="110"/>
-                    <line x1="200" y1="150" x2="80" y2="110"/>
-                    <line x1="200" y1="150" x2="200" y2="290"/>
-                  </g>
-                  <g fill="#00d4ff" opacity="0.6">
-                    <circle cx="200" cy="40" r="4"/>
-                    <circle cx="320" cy="110" r="4"/>
-                    <circle cx="320" cy="220" r="4"/>
-                    <circle cx="200" cy="290" r="4"/>
-                    <circle cx="80" cy="220" r="4"/>
-                    <circle cx="80" cy="110" r="4"/>
-                    <circle cx="200" cy="150" r="6"/>
-                  </g>
-                  <text x="200" y="170" text-anchor="middle" fill="#00d4ff" font-size="11" font-family="monospace" opacity="0.5">3D DESIGN</text>
-                </svg>
-              </div>
-            </div>
-            <div class="about__img about__img--sub">
-              <div class="about__img-inner img-placeholder img-placeholder--dark">
-                <svg viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="200" height="150" fill="#1a1a2e"/>
-                  <g stroke="#7c3aed" stroke-width="1" opacity="0.7">
-                    <line x1="0" y1="30" x2="200" y2="30"/>
-                    <line x1="0" y1="60" x2="200" y2="60"/>
-                    <line x1="0" y1="90" x2="200" y2="90"/>
-                    <line x1="0" y1="120" x2="200" y2="120"/>
-                    <line x1="40" y1="0" x2="40" y2="150"/>
-                    <line x1="80" y1="0" x2="80" y2="150"/>
-                    <line x1="120" y1="0" x2="120" y2="150"/>
-                    <line x1="160" y1="0" x2="160" y2="150"/>
-                  </g>
-                  <polyline points="20,110 60,70 100,85 140,45 180,30" stroke="#7c3aed" stroke-width="2.5" fill="none"/>
-                  <text x="100" y="140" text-anchor="middle" fill="#7c3aed" font-size="9" font-family="monospace" opacity="0.7">DX ANALYTICS</text>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="about__badge reveal">
-            <span class="about__badge-num">No.1</span>
-            <span class="about__badge-text">地域BIM/CIM<br>導入実績</span>
+  <!-- 実績バー -->
+  <div class="hero__kpi">
+    <div class="hero__kpi-item">
+      <span class="hero__kpi-num" data-target="32">0</span><span class="hero__kpi-unit">年</span>
+      <span class="hero__kpi-label">設立からの年数</span>
+    </div>
+    <div class="hero__kpi-sep"></div>
+    <div class="hero__kpi-item">
+      <span class="hero__kpi-num" data-target="600">0</span><span class="hero__kpi-unit">+</span>
+      <span class="hero__kpi-label">完了プロジェクト数</span>
+    </div>
+    <div class="hero__kpi-sep"></div>
+    <div class="hero__kpi-item">
+      <span class="hero__kpi-num" data-target="100">0</span><span class="hero__kpi-unit">%</span>
+      <span class="hero__kpi-label">BIM/CIM対応率</span>
+    </div>
+    <div class="hero__kpi-sep"></div>
+    <div class="hero__kpi-item">
+      <span class="hero__kpi-num" data-target="3">0</span><span class="hero__kpi-unit">冠</span>
+      <span class="hero__kpi-label">国土交通省表彰</span>
+    </div>
+  </div>
+
+  <div class="hero__scroll-hint">
+    <div class="hero__scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- ========== NEWS ========== -->
+<div class="news-bar">
+  <span class="news-bar__label">NEWS</span>
+  <div class="news-bar__track">
+    <div class="news-bar__inner">
+      <span>2025.06 — 国土交通省BIM/CIM優秀賞を受賞しました</span>
+      <span>2025.04 — 2026年度 新卒採用エントリー受付開始</span>
+      <span>2025.03 — ドローン測量部門を新設しました</span>
+      <span>2025.01 — フレックスタイム制・リモートワーク制度を導入</span>
+      <span>2025.06 — 国土交通省BIM/CIM優秀賞を受賞しました</span>
+      <span>2025.04 — 2026年度 新卒採用エントリー受付開始</span>
+      <span>2025.03 — ドローン測量部門を新設しました</span>
+      <span>2025.01 — フレックスタイム制・リモートワーク制度を導入</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== ABOUT ========== -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about__layout">
+      <div class="about__images">
+        <div class="about__img-main fade-in">
+          <!-- 橋梁点群データ風ビジュアル -->
+          <svg viewBox="0 0 560 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="560" height="380" fill="#0B2545"/>
+            <defs>
+              <radialGradient id="ag1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#1E5FA8" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#0B2545" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="560" height="380" fill="url(#ag1)"/>
+            <!-- point cloud bridge -->
+            <g fill="#4a9eff" opacity="0.7">
+              <!-- tower points -->
+              <circle cx="180" cy="80" r="1.5"/><circle cx="183" cy="100" r="1.2"/><circle cx="177" cy="120" r="1.5"/>
+              <circle cx="181" cy="140" r="1.3"/><circle cx="179" cy="160" r="1.5"/><circle cx="182" cy="180" r="1.2"/>
+              <circle cx="178" cy="200" r="1.5"/><circle cx="180" cy="220" r="1.3"/><circle cx="183" cy="240" r="1.2"/>
+              <circle cx="177" cy="260" r="1.5"/><circle cx="180" cy="280" r="1.2"/>
+              <circle cx="380" cy="80" r="1.5"/><circle cx="377" cy="100" r="1.2"/><circle cx="383" cy="120" r="1.5"/>
+              <circle cx="379" cy="140" r="1.3"/><circle cx="381" cy="160" r="1.5"/><circle cx="378" cy="180" r="1.2"/>
+              <circle cx="382" cy="200" r="1.5"/><circle cx="380" cy="220" r="1.3"/><circle cx="377" cy="240" r="1.2"/>
+              <circle cx="383" cy="260" r="1.5"/><circle cx="380" cy="280" r="1.2"/>
+            </g>
+            <!-- cable curve points -->
+            <g fill="#6ab8ff" opacity="0.8">
+              <circle cx="60" cy="290" r="1.5"/><circle cx="90" cy="268" r="1.3"/><circle cx="120" cy="248" r="1.5"/>
+              <circle cx="150" cy="232" r="1.3"/><circle cx="180" cy="190" r="1.5"/><circle cx="210" cy="210" r="1.3"/>
+              <circle cx="240" cy="220" r="1.5"/><circle cx="270" cy="225" r="1.3"/><circle cx="300" cy="225" r="1.5"/>
+              <circle cx="330" cy="218" r="1.3"/><circle cx="360" cy="208" r="1.5"/><circle cx="380" cy="190" r="1.3"/>
+              <circle cx="410" cy="232" r="1.5"/><circle cx="440" cy="248" r="1.3"/><circle cx="470" cy="268" r="1.5"/>
+              <circle cx="500" cy="290" r="1.3"/>
+            </g>
+            <!-- deck points -->
+            <g fill="#8acfff" opacity="0.6">
+              <circle cx="50" cy="298" r="1.2"/><circle cx="80" cy="300" r="1.5"/><circle cx="110" cy="299" r="1.2"/>
+              <circle cx="140" cy="300" r="1.5"/><circle cx="170" cy="298" r="1.2"/><circle cx="200" cy="300" r="1.5"/>
+              <circle cx="230" cy="299" r="1.2"/><circle cx="260" cy="300" r="1.5"/><circle cx="290" cy="298" r="1.2"/>
+              <circle cx="320" cy="300" r="1.5"/><circle cx="350" cy="299" r="1.2"/><circle cx="380" cy="300" r="1.5"/>
+              <circle cx="410" cy="298" r="1.2"/><circle cx="440" cy="300" r="1.5"/><circle cx="470" cy="299" r="1.2"/>
+              <circle cx="500" cy="300" r="1.5"/>
+            </g>
+            <!-- colored point cloud (terrain) -->
+            <g opacity="0.5">
+              <circle cx="30" cy="330" r="2" fill="#ff6b2b"/><circle cx="60" cy="325" r="1.5" fill="#ff8c42"/>
+              <circle cx="100" cy="335" r="2" fill="#ffaa00"/><circle cx="140" cy="328" r="1.5" fill="#ff6b2b"/>
+              <circle cx="180" cy="322" r="2" fill="#4a9eff"/><circle cx="220" cy="320" r="1.5" fill="#2adf8f"/>
+              <circle cx="260" cy="318" r="2" fill="#4a9eff"/><circle cx="300" cy="319" r="1.5" fill="#2adf8f"/>
+              <circle cx="340" cy="321" r="2" fill="#4a9eff"/><circle cx="380" cy="324" r="1.5" fill="#ff6b2b"/>
+              <circle cx="420" cy="330" r="2" fill="#ffaa00"/><circle cx="460" cy="326" r="1.5" fill="#ff8c42"/>
+              <circle cx="500" cy="333" r="2" fill="#ff6b2b"/><circle cx="530" cy="328" r="1.5" fill="#ffaa00"/>
+            </g>
+            <!-- label -->
+            <rect x="18" y="18" width="170" height="28" rx="4" fill="rgba(0,0,0,0.4)"/>
+            <text x="28" y="36" fill="#6ab8ff" font-size="11" font-family="monospace" font-weight="bold">● 3D POINT CLOUD</text>
+            <text x="390" y="356" fill="rgba(106,184,255,0.5)" font-size="10" font-family="monospace">BIM/CIM MODEL — ●●川橋梁</text>
+          </svg>
+        </div>
+        <div class="about__img-sub fade-in">
+          <svg viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="240" height="180" fill="#F0F5FF"/>
+            <!-- UAV drone illustration -->
+            <g transform="translate(120, 70)">
+              <!-- body -->
+              <rect x="-22" y="-8" width="44" height="16" rx="8" fill="#0B2545"/>
+              <rect x="-14" y="-5" width="28" height="10" rx="5" fill="#1E5FA8"/>
+              <!-- arms -->
+              <rect x="-50" y="-3" width="30" height="5" rx="2.5" fill="#2a4a7a" transform="rotate(-20)"/>
+              <rect x="22" y="-3" width="30" height="5" rx="2.5" fill="#2a4a7a" transform="rotate(20)"/>
+              <rect x="-50" y="-3" width="30" height="5" rx="2.5" fill="#2a4a7a" transform="rotate(20)"/>
+              <rect x="22" y="-3" width="30" height="5" rx="2.5" fill="#2a4a7a" transform="rotate(-20)"/>
+              <!-- propellers -->
+              <ellipse cx="-42" cy="-20" rx="18" ry="4" fill="rgba(26,86,219,0.3)" stroke="#1a56db" stroke-width="1.5"/>
+              <ellipse cx="42" cy="-20" rx="18" ry="4" fill="rgba(26,86,219,0.3)" stroke="#1a56db" stroke-width="1.5"/>
+              <ellipse cx="-42" cy="20" rx="18" ry="4" fill="rgba(26,86,219,0.3)" stroke="#1a56db" stroke-width="1.5"/>
+              <ellipse cx="42" cy="20" rx="18" ry="4" fill="rgba(26,86,219,0.3)" stroke="#1a56db" stroke-width="1.5"/>
+              <!-- camera -->
+              <rect x="-8" y="8" width="16" height="12" rx="3" fill="#111"/>
+              <circle cx="0" cy="14" r="4" fill="#333"/>
+              <circle cx="0" cy="14" r="2" fill="#555"/>
+              <!-- scan lines -->
+              <g stroke="#FF6B2B" stroke-width="1" opacity="0.6" stroke-dasharray="3 2">
+                <line x1="-8" y1="22" x2="-30" y2="80"/>
+                <line x1="0" y1="22" x2="0" y2="82"/>
+                <line x1="8" y1="22" x2="30" y2="80"/>
+              </g>
+            </g>
+            <!-- ground scan -->
+            <ellipse cx="120" cy="155" rx="40" ry="8" fill="rgba(255,107,43,0.15)" stroke="#FF6B2B" stroke-width="1" stroke-dasharray="4 3"/>
+            <text x="120" y="170" text-anchor="middle" fill="#0B2545" font-size="9" font-family="monospace" font-weight="bold" opacity="0.6">UAV SURVEY</text>
+          </svg>
+        </div>
+        <div class="about__award fade-in">
+          <div class="about__award-icon">🏆</div>
+          <div>
+            <strong>国交省 BIM/CIM<br>優秀事例賞</strong>
+            <span>2024受賞</span>
           </div>
         </div>
-        <div class="about__text">
-          <p class="section__tag reveal">ABOUT US</p>
-          <h2 class="section__title reveal">テクノロジーと<br>人の力で、<br>社会を動かす。</h2>
-          <p class="about__body reveal">
-            私たちは建設コンサルタント・測量・3次元設計を核に、DX（デジタルトランスフォーメーション）を積極的に取り入れながら、道路・橋梁・河川など社会インフラの設計・整備に携わっています。
-          </p>
-          <p class="about__body reveal">
-            最新のBIM/CIMやドローン測量、点群データ解析など、デジタル技術を駆使することで、設計の精度と効率を飛躍的に向上。若い感性とテクノロジーの融合で、業界の常識を塗り替えています。
-          </p>
-          <div class="about__values reveal">
-            <div class="about__value">
-              <span class="about__value-icon">⚡</span>
-              <div>
-                <strong>Innovation</strong>
-                <p>常に新しい技術を積極採用</p>
-              </div>
+      </div>
+      <div class="about__body">
+        <p class="section-tag fade-in">ABOUT US</p>
+        <h2 class="section-title fade-in">
+          社会インフラを支える<br>
+          <span class="c-accent">技術の力</span>と<br>
+          <span class="c-orange">人の力</span>。
+        </h2>
+        <p class="about__text fade-in">
+          私たちは道路・橋梁・河川・上下水道など、人々の暮らしを支えるインフラの調査・設計・整備を行う<strong>建設コンサルタント</strong>です。
+        </p>
+        <p class="about__text fade-in">
+          創業以来30年以上、技術力への投資を惜しまず、BIM/CIM・3次元設計・ドローン測量・ICT施工管理など<strong>常に時代の最先端技術</strong>を積極的に導入。国土交通省が推進する建設DXの先進企業として、地域社会の発展に貢献してきました。
+        </p>
+        <div class="about__values fade-in">
+          <div class="about__value">
+            <span class="about__value-dot"></span>
+            <div>
+              <strong>Innovation（革新）</strong>
+              <p>最新技術を積極的に採用し、業界の常識を塗り替える</p>
             </div>
-            <div class="about__value">
-              <span class="about__value-icon">🌏</span>
-              <div>
-                <strong>Impact</strong>
-                <p>地域・社会に貢献する仕事</p>
-              </div>
+          </div>
+          <div class="about__value">
+            <span class="about__value-dot"></span>
+            <div>
+              <strong>Integrity（誠実）</strong>
+              <p>地域・発注者・未来世代への責任ある仕事</p>
             </div>
-            <div class="about__value">
-              <span class="about__value-icon">🚀</span>
-              <div>
-                <strong>Growth</strong>
-                <p>若手が主役のフラットな職場</p>
-              </div>
+          </div>
+          <div class="about__value">
+            <span class="about__value-dot"></span>
+            <div>
+              <strong>Inspiration（挑戦）</strong>
+              <p>若い力と経験の融合で新たな価値を生み出す</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TECHNOLOGY -->
-  <section class="section technology" id="technology">
-    <div class="technology__bg"></div>
-    <div class="container">
-      <div class="section__head">
-        <p class="section__tag reveal">TECHNOLOGY & SERVICE</p>
-        <h2 class="section__title reveal">私たちの<span class="accent">技術力</span></h2>
-        <p class="section__subtitle reveal">最先端のデジタル技術と豊富な現場経験を掛け合わせ、質の高いインフラ整備を実現します。</p>
+<!-- ========== SERVICE ========== -->
+<section class="section service" id="service">
+  <div class="service__bg-label">SERVICE</div>
+  <div class="container">
+    <div class="section__head">
+      <p class="section-tag fade-in">BUSINESS</p>
+      <h2 class="section-title fade-in">事業内容</h2>
+      <p class="section-desc fade-in">社会インフラの設計・整備に関わるあらゆる業務を、<br>最先端の技術力でサポートします。</p>
+    </div>
+    <div class="service__grid">
+      <div class="service__card fade-in" style="--clr:#1a56db">
+        <div class="service__card-num">01</div>
+        <div class="service__card-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M8 40 L24 10 L40 40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="13" y1="30" x2="35" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg>
+        </div>
+        <h3>道路・橋梁設計</h3>
+        <p>一般道・高速道路から歩道・自転車道まで、あらゆる道路の計画・設計。橋梁の詳細設計・耐震補強設計も豊富な実績で対応します。</p>
+        <ul class="service__card-tags">
+          <li>道路詳細設計</li><li>橋梁詳細設計</li><li>耐震設計</li><li>歩道整備</li>
+        </ul>
       </div>
-      <div class="tech__grid">
-        <div class="tech__card reveal" data-delay="0">
-          <div class="tech__card-icon">
-            <svg viewBox="0 0 60 60" fill="none">
-              <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
-              <path d="M15 45 L30 15 L45 45" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="19" y1="37" x2="41" y2="37" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="30" cy="30" r="3" fill="currentColor"/>
-            </svg>
-          </div>
-          <h3 class="tech__card-title">3次元設計<br><small>BIM/CIM</small></h3>
-          <p class="tech__card-desc">道路・橋梁・トンネルなどの構造物を3Dモデルで設計。国土交通省が推進するBIM/CIM（Building / Construction Information Modeling）に完全対応し、設計の可視化・効率化を実現します。</p>
-          <ul class="tech__card-tags">
-            <li>Civil 3D</li>
-            <li>Revit</li>
-            <li>Infraworks</li>
-            <li>点群処理</li>
-          </ul>
+      <div class="service__card fade-in" style="--clr:#0891b2">
+        <div class="service__card-num">02</div>
+        <div class="service__card-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M6 36 Q16 20 24 28 Q32 36 42 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/><rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="28" y="28" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/></svg>
         </div>
-        <div class="tech__card reveal" data-delay="100">
-          <div class="tech__card-icon">
-            <svg viewBox="0 0 60 60" fill="none">
-              <rect x="8" y="8" width="44" height="44" rx="6" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 30 Q30 18 40 30 Q30 42 20 30Z" stroke="currentColor" stroke-width="2" fill="none"/>
-              <circle cx="30" cy="30" r="4" fill="currentColor"/>
-              <line x1="30" y1="8" x2="30" y2="15" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="30" y1="45" x2="30" y2="52" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="8" y1="30" x2="15" y2="30" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="45" y1="30" x2="52" y2="30" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <h3 class="tech__card-title">ドローン測量<br><small>UAV Survey</small></h3>
-          <p class="tech__card-desc">最新型UAV（無人航空機）を活用した空撮・写真測量・LiDAR測量。広域地形の高精度3Dデータ取得から点群データ解析まで、従来比1/3の工期で高品質な成果を提供します。</p>
-          <ul class="tech__card-tags">
-            <li>UAV測量</li>
-            <li>LiDAR</li>
-            <li>点群解析</li>
-            <li>オルソ画像</li>
-          </ul>
+        <h3>河川・砂防設計</h3>
+        <p>河川改修・堤防設計・排水計画から、砂防ダム・急傾斜地対策まで。流域の水文解析と合わせ、地域の安全・安心を守る設計を行います。</p>
+        <ul class="service__card-tags">
+          <li>河川改修設計</li><li>堤防設計</li><li>砂防設計</li><li>治水計画</li>
+        </ul>
+      </div>
+      <div class="service__card fade-in" style="--clr:#6d28d9">
+        <div class="service__card-num">03</div>
+        <div class="service__card-icon">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="10" stroke="currentColor" stroke-width="2.5"/><path d="M10 40 C10 30 38 30 38 40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="24" y1="30" x2="24" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <div class="tech__card reveal" data-delay="200">
-          <div class="tech__card-icon">
-            <svg viewBox="0 0 60 60" fill="none">
-              <path d="M10 50 L10 20 L30 10 L50 20 L50 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect x="22" y="35" width="16" height="15" stroke="currentColor" stroke-width="1.5" rx="1"/>
-              <rect x="16" y="25" width="10" height="10" stroke="currentColor" stroke-width="1.5" rx="1"/>
-              <rect x="34" y="25" width="10" height="10" stroke="currentColor" stroke-width="1.5" rx="1"/>
-              <line x1="10" y1="20" x2="50" y2="20" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <h3 class="tech__card-title">建設コンサルタント<br><small>Infrastructure Design</small></h3>
-          <p class="tech__card-desc">道路・河川・橋梁・上下水道など多岐にわたる社会インフラの調査・計画・設計。地域課題を深く理解し、安全で持続可能なインフラ整備を技術的に支援します。</p>
-          <ul class="tech__card-tags">
-            <li>道路設計</li>
-            <li>橋梁設計</li>
-            <li>河川設計</li>
-            <li>上下水道</li>
-          </ul>
+        <h3>測量・地盤調査</h3>
+        <p>GNSS測量・水準測量・地籍調査から最新のドローン・LiDAR測量まで対応。地盤調査・ボーリング解析と合わせ、設計の基礎となる正確なデータを提供します。</p>
+        <ul class="service__card-tags">
+          <li>GNSS測量</li><li>UAV測量</li><li>LiDAR</li><li>地盤調査</li>
+        </ul>
+      </div>
+      <div class="service__card fade-in" style="--clr:#FF6B2B">
+        <div class="service__card-num">04</div>
+        <div class="service__card-icon">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="14" width="36" height="24" rx="3" stroke="currentColor" stroke-width="2.5"/><line x1="6" y1="22" x2="42" y2="22" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="32" r="3" fill="currentColor"/><line x1="22" y1="32" x2="36" y2="32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="22" y1="36" x2="30" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <div class="tech__card reveal" data-delay="300">
-          <div class="tech__card-icon">
-            <svg viewBox="0 0 60 60" fill="none">
-              <rect x="8" y="14" width="44" height="32" rx="4" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="20" y1="46" x2="40" y2="46" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="30" y1="46" x2="30" y2="52" stroke="currentColor" stroke-width="1.5"/>
-              <polyline points="16,35 22,27 28,31 35,22 44,18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="44" cy="18" r="3" fill="currentColor"/>
-            </svg>
-          </div>
-          <h3 class="tech__card-title">DX推進支援<br><small>Digital Transformation</small></h3>
-          <p class="tech__card-desc">建設現場のデジタル化を総合的にサポート。ICT施工管理、遠隔臨場、デジタルツイン構築など、現場の生産性と安全性を高めるDXソリューションを提案・実装します。</p>
-          <ul class="tech__card-tags">
-            <li>ICT施工</li>
-            <li>遠隔臨場</li>
-            <li>デジタルツイン</li>
-            <li>データ連携</li>
-          </ul>
+        <h3>上下水道設計</h3>
+        <p>上水道施設・配水管網の計画・設計から、下水道管路・処理場まで。老朽化インフラの更新計画や耐震診断・補強設計も幅広く対応します。</p>
+        <ul class="service__card-tags">
+          <li>上水道計画</li><li>下水道設計</li><li>管路更新</li><li>耐震診断</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TECHNOLOGY ========== -->
+<section class="section technology" id="technology">
+  <div class="container">
+    <div class="section__head">
+      <p class="section-tag fade-in">TECHNOLOGY & DX</p>
+      <h2 class="section-title fade-in">私たちの<span class="c-accent">技術力</span></h2>
+      <p class="section-desc fade-in">デジタル技術を駆使して設計の精度・効率・品質を飛躍的に向上させています。</p>
+    </div>
+
+    <!-- BIM/CIM フィーチャー -->
+    <div class="tech-feature fade-in">
+      <div class="tech-feature__visual">
+        <svg viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <rect width="480" height="320" fill="#0B2545"/>
+          <defs>
+            <linearGradient id="tf1" x1="0" y1="0" x2="480" y2="320" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#1E5FA8" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#0B2545" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <rect width="480" height="320" fill="url(#tf1)"/>
+          <!-- 3D box wireframe -->
+          <!-- front face -->
+          <polygon points="120,240 280,240 280,140 120,140" stroke="#4a9eff" stroke-width="1.5" fill="rgba(26,86,219,0.08)"/>
+          <!-- top face -->
+          <polygon points="120,140 280,140 360,80 200,80" stroke="#4a9eff" stroke-width="1.5" fill="rgba(26,86,219,0.12)"/>
+          <!-- right face -->
+          <polygon points="280,240 360,180 360,80 280,140" stroke="#4a9eff" stroke-width="1.5" fill="rgba(26,86,219,0.06)"/>
+          <!-- internal lines -->
+          <line x1="120" y1="190" x2="280" y2="190" stroke="#4a9eff" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.5"/>
+          <line x1="200" y1="240" x2="200" y2="140" stroke="#4a9eff" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.5"/>
+          <line x1="200" y1="140" x2="240" y2="120" stroke="#4a9eff" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.5"/>
+          <!-- dimension arrows -->
+          <g stroke="#FF6B2B" stroke-width="1.2" opacity="0.8">
+            <line x1="90" y1="140" x2="90" y2="240"/><line x1="84" y1="140" x2="96" y2="140"/><line x1="84" y1="240" x2="96" y2="240"/>
+            <line x1="120" y1="270" x2="280" y2="270"/><line x1="120" y1="264" x2="120" y2="276"/><line x1="280" y1="264" x2="280" y2="276"/>
+          </g>
+          <!-- dimension text -->
+          <text x="74" y="195" fill="#FF6B2B" font-size="9" font-family="monospace">H</text>
+          <text x="192" y="286" fill="#FF6B2B" font-size="9" font-family="monospace">W</text>
+          <!-- nodes -->
+          <g fill="#6ab8ff">
+            <circle cx="120" cy="140" r="3.5"/><circle cx="280" cy="140" r="3.5"/><circle cx="120" cy="240" r="3.5"/>
+            <circle cx="280" cy="240" r="3.5"/><circle cx="200" cy="80" r="3.5"/><circle cx="360" cy="80" r="3.5"/>
+            <circle cx="360" cy="180" r="3.5"/>
+          </g>
+          <!-- floating labels -->
+          <rect x="290" y="190" width="80" height="22" rx="4" fill="rgba(0,0,0,0.5)"/>
+          <text x="298" y="204" fill="#6ab8ff" font-size="9" font-family="monospace">VOLUME: 1240m³</text>
+          <rect x="130" y="95" width="70" height="22" rx="4" fill="rgba(0,0,0,0.5)"/>
+          <text x="138" y="109" fill="#2adf8f" font-size="9" font-family="monospace">STRUCT OK ✓</text>
+          <!-- BIM label -->
+          <rect x="16" y="16" width="110" height="28" rx="5" fill="rgba(26,86,219,0.6)" stroke="#4a9eff" stroke-width="1"/>
+          <text x="26" y="34" fill="white" font-size="11" font-family="monospace" font-weight="bold">BIM / CIM MODEL</text>
+          <!-- coordinates -->
+          <text x="350" y="300" fill="rgba(106,184,255,0.4)" font-size="8" font-family="monospace">X:134.05° Y:35.12° Z:+42m</text>
+        </svg>
+      </div>
+      <div class="tech-feature__body">
+        <h3 class="tech-feature__title">BIM / CIM<br><span>3次元設計</span></h3>
+        <p class="tech-feature__desc">国土交通省が推進するBIM/CIM（Building/Construction Information Modeling）に完全対応。道路・橋梁・トンネルなどあらゆるインフラを3Dモデルで設計・可視化します。</p>
+        <ul class="tech-feature__list">
+          <li><span class="check">✓</span> 設計ミス・干渉の早期発見</li>
+          <li><span class="check">✓</span> 3Dによる関係者合意形成の迅速化</li>
+          <li><span class="check">✓</span> 施工・維持管理への一貫したデータ活用</li>
+          <li><span class="check">✓</span> Civil 3D / Revit / Infraworks 対応</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- テクノロジーカード -->
+    <div class="tech__cards">
+      <div class="tech__card fade-in">
+        <div class="tech__card-icon" style="background:#e0f0ff;color:#1a56db">
+          <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="12" r="6" stroke="currentColor" stroke-width="2"/><path d="M8 30 Q10 24 14 22 Q18 20 22 22 Q26 24 28 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><line x1="28" y1="8" x2="32" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="28" y1="12" x2="34" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
-        <div class="tech__card reveal" data-delay="400">
-          <div class="tech__card-icon">
-            <svg viewBox="0 0 60 60" fill="none">
-              <circle cx="30" cy="20" r="10" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M12 52 C12 40 48 40 48 52" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="38" y1="14" x2="52" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="40" y1="20" x2="54" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="38" y1="26" x2="52" y2="32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3 class="tech__card-title">GIS・地盤解析<br><small>GIS & Ground Analysis</small></h3>
-          <p class="tech__card-desc">GIS（地理情報システム）を活用した地形分析、地盤調査・解析、ハザードマップ作成。空間データの活用で、より精度の高い計画・設計・防災対策を実現します。</p>
-          <ul class="tech__card-tags">
-            <li>GIS解析</li>
-            <li>地盤調査</li>
-            <li>防災計画</li>
-            <li>地図作成</li>
-          </ul>
+        <h4>ドローン・UAV測量</h4>
+        <p>最新型ドローンによる空撮・写真測量・LiDAR測量。広域地形を従来比1/4の工期・コストで高精度3D化。危険箇所の立入不要な安全測量を実現します。</p>
+      </div>
+      <div class="tech__card fade-in">
+        <div class="tech__card-icon" style="background:#fff0e8;color:#FF6B2B">
+          <svg viewBox="0 0 36 36" fill="none"><rect x="4" y="10" width="28" height="20" rx="3" stroke="currentColor" stroke-width="2"/><polyline points="8,22 13,17 18,20 23,14 30,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="30" cy="12" r="2.5" fill="currentColor"/></svg>
         </div>
-        <div class="tech__card reveal" data-delay="500">
-          <div class="tech__card-icon">
-            <svg viewBox="0 0 60 60" fill="none">
-              <path d="M30 10 L52 24 L52 48 L30 52 L8 48 L8 24 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M30 10 L30 52" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
-              <path d="M8 24 L52 24" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
-              <circle cx="30" cy="31" r="6" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="30" cy="31" r="2" fill="currentColor"/>
-            </svg>
+        <h4>ICT施工管理</h4>
+        <p>3D設計データを建機の自動制御・出来形管理に直結。マシンコントロール・マシンガイダンスにより施工精度を飛躍的に向上させ、検査の省力化も実現します。</p>
+      </div>
+      <div class="tech__card fade-in">
+        <div class="tech__card-icon" style="background:#f0eeff;color:#6d28d9">
+          <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="10" stroke="currentColor" stroke-width="2"/><line x1="18" y1="4" x2="18" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="28" x2="18" y2="32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="18" x2="8" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="28" y1="18" x2="32" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="18" r="4" fill="currentColor" opacity="0.3"/></svg>
+        </div>
+        <h4>GIS・点群データ解析</h4>
+        <p>GIS（地理情報システム）活用と点群データ処理で、地形・地物を高精度にデジタル化。ハザードマップ作成・防災計画立案・インフラ老朽化診断に活用します。</p>
+      </div>
+      <div class="tech__card fade-in">
+        <div class="tech__card-icon" style="background:#e8fff4;color:#059669">
+          <svg viewBox="0 0 36 36" fill="none"><rect x="6" y="6" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/><rect x="20" y="6" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/><rect x="6" y="20" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/><rect x="20" y="20" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/><line x1="16" y1="11" x2="20" y2="11" stroke="currentColor" stroke-width="1.5"/><line x1="11" y1="16" x2="11" y2="20" stroke="currentColor" stroke-width="1.5"/><line x1="25" y1="16" x2="25" y2="20" stroke="currentColor" stroke-width="1.5"/><line x1="16" y1="25" x2="20" y2="25" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h4>デジタルツイン</h4>
+        <p>完成したインフラの3Dモデルとセンサーデータを組み合わせ、構造物の状態をリアルタイムに可視化。予防保全・長寿命化計画の高度化を支援します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WORKS ========== -->
+<section class="section works" id="works">
+  <div class="container">
+    <div class="section__head">
+      <p class="section-tag fade-in">PROJECTS</p>
+      <h2 class="section-title fade-in">主な実績</h2>
+      <p class="section-desc fade-in">最先端技術を活かして完了した代表的なプロジェクト事例です。</p>
+    </div>
+    <div class="works__grid">
+      <div class="works__card works__card--big fade-in">
+        <div class="works__card-img">
+          <svg viewBox="0 0 640 380" fill="none" style="width:100%;height:100%">
+            <rect width="640" height="380" fill="#0B2545"/>
+            <defs><linearGradient id="wg1" x1="0" y1="0" x2="640" y2="380" gradientUnits="userSpaceOnUse"><stop stop-color="#0d2d56"/><stop offset="1" stop-color="#0B2545"/></linearGradient></defs>
+            <rect width="640" height="380" fill="url(#wg1)"/>
+            <!-- wireframe bridge top-down perspective -->
+            <g stroke="#4a9eff" stroke-width="1.5" opacity="0.9" fill="none">
+              <rect x="60" y="80" width="520" height="220" rx="4" fill="rgba(26,86,219,0.05)"/>
+              <line x1="60" y1="130" x2="580" y2="130"/>
+              <line x1="60" y1="190" x2="580" y2="190"/>
+              <line x1="60" y1="250" x2="580" y2="250"/>
+              <line x1="140" y1="80" x2="140" y2="300"/>
+              <line x1="260" y1="80" x2="260" y2="300"/>
+              <line x1="380" y1="80" x2="380" y2="300"/>
+              <line x1="500" y1="80" x2="500" y2="300"/>
+            </g>
+            <!-- highlight cells -->
+            <rect x="140" y="130" width="120" height="60" fill="rgba(255,107,43,0.12)" stroke="#FF6B2B" stroke-width="1.5"/>
+            <rect x="260" y="80" width="120" height="50" fill="rgba(42,223,143,0.1)" stroke="#2adf8f" stroke-width="1.5"/>
+            <!-- label badges -->
+            <rect x="148" y="150" width="100" height="18" rx="3" fill="rgba(255,107,43,0.7)"/>
+            <text x="153" y="162" fill="white" font-size="9" font-family="monospace">主桁 — PC-I型</text>
+            <rect x="268" y="92" width="100" height="18" rx="3" fill="rgba(42,223,143,0.7)"/>
+            <text x="273" y="104" fill="#0B2545" font-size="9" font-family="monospace" font-weight="bold">橋脚 — OK ✓</text>
+            <!-- dimension grid labels -->
+            <text x="92" y="74" fill="rgba(106,184,255,0.6)" font-size="9" font-family="monospace">STA.0+00</text>
+            <text x="212" y="74" fill="rgba(106,184,255,0.6)" font-size="9" font-family="monospace">STA.0+60</text>
+            <text x="332" y="74" fill="rgba(106,184,255,0.6)" font-size="9" font-family="monospace">STA.1+20</text>
+            <!-- BIM label -->
+            <rect x="16" y="16" width="130" height="28" rx="5" fill="rgba(26,86,219,0.6)" stroke="#4a9eff" stroke-width="1"/>
+            <text x="26" y="34" fill="white" font-size="11" font-family="monospace" font-weight="bold">BIM 橋梁詳細設計</text>
+            <!-- measurement annotation -->
+            <g stroke="#FF6B2B" stroke-width="1.2" opacity="0.7">
+              <line x1="60" y1="330" x2="580" y2="330"/>
+              <line x1="60" y1="324" x2="60" y2="336"/>
+              <line x1="580" y1="324" x2="580" y2="336"/>
+              <text x="310" y="346" fill="#FF6B2B" font-size="10" font-family="monospace" text-anchor="middle">L = 260.0 m</text>
+            </g>
+          </svg>
+        </div>
+        <div class="works__card-body">
+          <span class="works__tag">BIM/CIM · 橋梁設計</span>
+          <h3>●●川橋梁 詳細設計</h3>
+          <p>全長260mの斜張橋をBIM/CIMで3次元設計。3Dモデルによる干渉チェック・施工シミュレーションを実施し、設計変更ゼロ・工期短縮20%を達成。国土交通省優秀BIM/CIM事例に選出。</p>
+          <div class="works__card-meta">
+            <span>発注者：●●県</span>
+            <span>完成：2024年3月</span>
           </div>
-          <h3 class="tech__card-title">測量・地籍<br><small>Survey & Cadastral</small></h3>
-          <p class="tech__card-desc">GNSS測量・水準測量・地籍調査など各種測量業務。最新機器による高精度計測と、豊富な経験に裏打ちされた成果品の作成で、あらゆる測量ニーズにお応えします。</p>
-          <ul class="tech__card-tags">
-            <li>GNSS測量</li>
-            <li>地籍調査</li>
-            <li>トータルステーション</li>
-            <li>TS出来形</li>
-          </ul>
+        </div>
+      </div>
+      <div class="works__card fade-in">
+        <div class="works__card-img">
+          <svg viewBox="0 0 400 220" fill="none" style="width:100%;height:100%">
+            <rect width="400" height="220" fill="#0d3b38"/>
+            <!-- drone scanning terrain -->
+            <g fill="#2dd4bf" opacity="0.5">
+              <circle cx="20" cy="170" r="2"/><circle cx="40" cy="162" r="1.5"/><circle cx="60" cy="175" r="2"/>
+              <circle cx="80" cy="158" r="1.5"/><circle cx="100" cy="168" r="2"/><circle cx="120" cy="155" r="1.5"/>
+              <circle cx="140" cy="165" r="2"/><circle cx="160" cy="150" r="1.5"/><circle cx="180" cy="160" r="2"/>
+              <circle cx="200" cy="148" r="1.5"/><circle cx="220" cy="158" r="2"/><circle cx="240" cy="145" r="1.5"/>
+              <circle cx="260" cy="155" r="2"/><circle cx="280" cy="165" r="1.5"/><circle cx="300" cy="152" r="2"/>
+              <circle cx="320" cy="162" r="1.5"/><circle cx="340" cy="172" r="2"/><circle cx="360" cy="158" r="1.5"/>
+              <circle cx="380" cy="168" r="2"/>
+            </g>
+            <!-- elevation colormap -->
+            <g opacity="0.35">
+              <rect x="0" y="130" width="400" height="90" fill="url(#elevGrad)"/>
+              <defs><linearGradient id="elevGrad" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2dd4bf"/><stop offset="40%" stop-color="#60a5fa"/>
+                <stop offset="70%" stop-color="#818cf8"/><stop offset="100%" stop-color="#2dd4bf"/>
+              </linearGradient></defs>
+            </g>
+            <!-- drone icon -->
+            <g transform="translate(200, 60)" opacity="0.9">
+              <rect x="-12" y="-4" width="24" height="8" rx="4" fill="#0d3b38" stroke="#2dd4bf" stroke-width="1.5"/>
+              <ellipse cx="-22" cy="-12" rx="12" ry="3" fill="rgba(45,212,191,0.2)" stroke="#2dd4bf" stroke-width="1"/>
+              <ellipse cx="22" cy="-12" rx="12" ry="3" fill="rgba(45,212,191,0.2)" stroke="#2dd4bf" stroke-width="1"/>
+              <ellipse cx="-22" cy="12" rx="12" ry="3" fill="rgba(45,212,191,0.2)" stroke="#2dd4bf" stroke-width="1"/>
+              <ellipse cx="22" cy="12" rx="12" ry="3" fill="rgba(45,212,191,0.2)" stroke="#2dd4bf" stroke-width="1"/>
+              <line x1="0" y1="4" x2="0" y2="20" stroke="#2dd4bf" stroke-width="1"/>
+              <g stroke="#2dd4bf" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.5">
+                <line x1="-30" y1="20" x2="-10" y2="60"/><line x1="0" y1="20" x2="0" y2="62"/><line x1="30" y1="20" x2="10" y2="60"/>
+              </g>
+            </g>
+            <rect x="12" y="12" width="120" height="22" rx="4" fill="rgba(0,0,0,0.5)"/>
+            <text x="20" y="26" fill="#2dd4bf" font-size="9" font-family="monospace" font-weight="bold">UAV-LiDAR 測量</text>
+          </svg>
+        </div>
+        <div class="works__card-body">
+          <span class="works__tag">ドローン測量 · LiDAR</span>
+          <h3>山間部道路改良 UAV測量</h3>
+          <p>急峻な山間部の道路改良工事に先立ち、LiDARドローンで広域地形を高精度計測。従来の地上測量に比べ、工期1/4・費用1/3で高品質な3D地形データを取得。</p>
+        </div>
+      </div>
+      <div class="works__card fade-in">
+        <div class="works__card-img">
+          <svg viewBox="0 0 400 220" fill="none" style="width:100%;height:100%">
+            <rect width="400" height="220" fill="#1a0b38"/>
+            <!-- ICT construction management screen -->
+            <g stroke="#818cf8" stroke-width="0.8" opacity="0.3">
+              <line x1="0" y1="44" x2="400" y2="44"/><line x1="0" y1="88" x2="400" y2="88"/>
+              <line x1="0" y1="132" x2="400" y2="132"/><line x1="0" y1="176" x2="400" y2="176"/>
+              <line x1="80" y1="0" x2="80" y2="220"/><line x1="160" y1="0" x2="160" y2="220"/>
+              <line x1="240" y1="0" x2="240" y2="220"/><line x1="320" y1="0" x2="320" y2="220"/>
+            </g>
+            <!-- progress bars -->
+            <rect x="20" y="50" width="280" height="16" rx="8" fill="rgba(129,140,248,0.2)"/>
+            <rect x="20" y="50" width="220" height="16" rx="8" fill="#818cf8"/>
+            <text x="308" y="63" fill="#818cf8" font-size="10" font-family="monospace">78%</text>
+            <rect x="20" y="80" width="280" height="16" rx="8" fill="rgba(129,140,248,0.2)"/>
+            <rect x="20" y="80" width="160" height="16" rx="8" fill="#60a5fa"/>
+            <text x="308" y="93" fill="#60a5fa" font-size="10" font-family="monospace">57%</text>
+            <rect x="20" y="110" width="280" height="16" rx="8" fill="rgba(129,140,248,0.2)"/>
+            <rect x="20" y="110" width="260" height="16" rx="8" fill="#2dd4bf"/>
+            <text x="308" y="123" fill="#2dd4bf" font-size="10" font-family="monospace">92%</text>
+            <!-- labels -->
+            <text x="20" y="44" fill="rgba(255,255,255,0.5)" font-size="9" font-family="monospace">掘削工</text>
+            <text x="20" y="74" fill="rgba(255,255,255,0.5)" font-size="9" font-family="monospace">盛土工</text>
+            <text x="20" y="104" fill="rgba(255,255,255,0.5)" font-size="9" font-family="monospace">舗装工</text>
+            <!-- status -->
+            <rect x="20" y="150" width="100" height="24" rx="5" fill="rgba(42,223,143,0.2)" stroke="#2adf8f" stroke-width="1"/>
+            <text x="30" y="166" fill="#2adf8f" font-size="10" font-family="monospace">工程 順調 ✓</text>
+            <rect x="140" y="150" width="100" height="24" rx="5" fill="rgba(96,165,250,0.2)" stroke="#60a5fa" stroke-width="1"/>
+            <text x="150" y="166" fill="#60a5fa" font-size="10" font-family="monospace">品質 良好 ✓</text>
+            <rect x="12" y="12" width="130" height="22" rx="4" fill="rgba(0,0,0,0.5)"/>
+            <text x="20" y="26" fill="#818cf8" font-size="9" font-family="monospace" font-weight="bold">ICT 施工管理ダッシュボード</text>
+          </svg>
+        </div>
+        <div class="works__card-body">
+          <span class="works__tag">ICT施工 · DX</span>
+          <h3>●●道路改良 ICT施工管理</h3>
+          <p>3D設計データを活用したICT施工管理を導入。マシンコントロールによる自動整形と遠隔臨場の組み合わせで、出来形管理工数を従来比60%削減。</p>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- WORKS -->
-  <section class="section works" id="works">
-    <div class="container">
-      <div class="section__head">
-        <p class="section__tag reveal">WORKS</p>
-        <h2 class="section__title reveal">プロジェクト<span class="accent">実績</span></h2>
-        <p class="section__subtitle reveal">最先端技術を活かした代表的なプロジェクトをご紹介します。</p>
-      </div>
-      <div class="works__grid">
-        <div class="works__card works__card--featured reveal">
-          <div class="works__card-img">
-            <div class="img-placeholder img-placeholder--blue" style="height:100%">
-              <svg viewBox="0 0 600 400" fill="none" style="width:100%;height:100%">
-                <rect width="600" height="400" fill="url(#wg1)"/>
-                <defs>
-                  <linearGradient id="wg1" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#0f3460"/>
-                    <stop offset="100%" stop-color="#1a1a2e"/>
-                  </linearGradient>
-                </defs>
-                <!-- Bridge 3D wireframe -->
-                <g stroke="#00d4ff" stroke-width="1" opacity="0.6">
-                  <line x1="100" y1="300" x2="500" y2="300"/>
-                  <line x1="150" y1="300" x2="200" y2="150"/>
-                  <line x1="450" y1="300" x2="400" y2="150"/>
-                  <line x1="200" y1="150" x2="400" y2="150"/>
-                  <path d="M 150 300 Q 300 220 450 300" fill="none" stroke="#00d4ff" stroke-width="2"/>
-                  <path d="M 200 150 Q 300 130 400 150" fill="none"/>
-                  <!-- vertical cables -->
-                  <line x1="220" y1="152" x2="225" y2="290"/>
-                  <line x1="250" y1="145" x2="255" y2="285"/>
-                  <line x1="280" y1="140" x2="285" y2="282"/>
-                  <line x1="310" y1="140" x2="315" y2="282"/>
-                  <line x1="340" y1="143" x2="345" y2="285"/>
-                  <line x1="370" y1="148" x2="375" y2="288"/>
-                  <line x1="395" y1="152" x2="380" y2="290"/>
-                </g>
-                <g fill="#00d4ff" opacity="0.8">
-                  <circle cx="150" cy="300" r="3"/>
-                  <circle cx="450" cy="300" r="3"/>
-                  <circle cx="200" cy="150" r="4"/>
-                  <circle cx="400" cy="150" r="4"/>
-                </g>
-                <text x="300" y="360" text-anchor="middle" fill="#00d4ff" font-size="12" font-family="monospace" opacity="0.6">BIM/CIM 橋梁3Dモデル</text>
-              </svg>
-            </div>
-          </div>
-          <div class="works__card-body">
-            <span class="works__card-tag">BIM/CIM · 橋梁設計</span>
-            <h3 class="works__card-title">○○川橋梁 3次元設計</h3>
-            <p class="works__card-desc">BIM/CIMを全面採用した橋梁の詳細設計。3Dモデルによる干渉チェックと施工シミュレーションにより、設計変更ゼロを達成。国土交通省から優秀BIM/CIM事例として表彰。</p>
-          </div>
-        </div>
-        <div class="works__card reveal">
-          <div class="works__card-img">
-            <div class="img-placeholder img-placeholder--purple" style="height:100%">
-              <svg viewBox="0 0 400 250" fill="none" style="width:100%;height:100%">
-                <rect width="400" height="250" fill="#2d1b69"/>
-                <g fill="#a78bfa" opacity="0.3">
-                  <rect x="20" y="80" width="40" height="120"/>
-                  <rect x="75" y="60" width="40" height="140"/>
-                  <rect x="130" y="40" width="40" height="160"/>
-                  <rect x="185" y="90" width="40" height="110"/>
-                  <rect x="240" y="50" width="40" height="150"/>
-                  <rect x="295" y="70" width="40" height="130"/>
-                  <rect x="350" y="30" width="40" height="170"/>
-                </g>
-                <polyline points="20,200 75,180 130,160 185,175 240,155 295,165 375,140" stroke="#7c3aed" stroke-width="2" fill="none"/>
-                <text x="200" y="235" text-anchor="middle" fill="#a78bfa" font-size="10" font-family="monospace">UAVドローン測量データ解析</text>
-              </svg>
-            </div>
-          </div>
-          <div class="works__card-body">
-            <span class="works__card-tag">ドローン測量 · GIS</span>
-            <h3 class="works__card-title">山間部道路 UAV測量</h3>
-            <p class="works__card-desc">起伏の激しい山間部での広域測量をUAV（ドローン）で実施。LiDARによる点群データ取得と3D地形モデル生成で、従来比1/4の工期・コストを実現。</p>
-          </div>
-        </div>
-        <div class="works__card reveal">
-          <div class="works__card-img">
-            <div class="img-placeholder img-placeholder--teal" style="height:100%">
-              <svg viewBox="0 0 400 250" fill="none" style="width:100%;height:100%">
-                <rect width="400" height="250" fill="#0d3b38"/>
-                <g stroke="#2dd4bf" stroke-width="1" opacity="0.4">
-                  <line x1="0" y1="50" x2="400" y2="50"/>
-                  <line x1="0" y1="100" x2="400" y2="100"/>
-                  <line x1="0" y1="150" x2="400" y2="150"/>
-                  <line x1="0" y1="200" x2="400" y2="200"/>
-                  <line x1="80" y1="0" x2="80" y2="250"/>
-                  <line x1="160" y1="0" x2="160" y2="250"/>
-                  <line x1="240" y1="0" x2="240" y2="250"/>
-                  <line x1="320" y1="0" x2="320" y2="250"/>
-                </g>
-                <path d="M 0 180 Q 80 160 160 140 Q 240 120 320 100 Q 360 90 400 80" stroke="#2dd4bf" stroke-width="2.5" fill="none"/>
-                <text x="200" y="235" text-anchor="middle" fill="#2dd4bf" font-size="10" font-family="monospace">河川改修 ICT施工管理</text>
-              </svg>
-            </div>
-          </div>
-          <div class="works__card-body">
-            <span class="works__card-tag">ICT施工 · DX</span>
-            <h3 class="works__card-title">△△川 河川改修 ICT施工</h3>
-            <p class="works__card-desc">河川改修工事にICT施工管理を導入。3D設計データをそのまま建機の自動制御に活用し、出来形管理の自動化と品質向上を同時に達成したDX先進事例。</p>
-          </div>
-        </div>
-      </div>
-      <div class="works__more reveal">
-        <a href="#contact" class="btn btn--outline">実績一覧を見る →</a>
-      </div>
+    <div class="works__more fade-in">
+      <a href="#contact" class="btn btn--outline-dark">実績一覧を見る <span>→</span></a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DX FEATURE -->
-  <section class="section dx-feature">
+<!-- ========== RECRUIT ========== -->
+<section class="section recruit" id="recruit">
+  <div class="recruit__inner">
     <div class="container">
-      <div class="dx-feature__layout">
-        <div class="dx-feature__text">
-          <p class="section__tag reveal">DIGITAL TRANSFORMATION</p>
-          <h2 class="section__title reveal">建設×DXで<br><span class="accent">可能性を拡張</span></h2>
-          <p class="dx-feature__body reveal">
-            私たちは「建設会社」ではなく「テクノロジーカンパニー」です。3次元設計・ドローン・デジタルツイン・AI解析——すべての技術を武器に、現場の課題を根本から解決します。
-          </p>
-          <div class="dx-feature__steps reveal">
-            <div class="dx-step">
-              <span class="dx-step__num">01</span>
-              <div>
-                <strong>データ収集</strong>
-                <p>ドローン・LiDAR・GNSSで現場を高精度デジタル化</p>
-              </div>
-            </div>
-            <div class="dx-step">
-              <span class="dx-step__num">02</span>
-              <div>
-                <strong>3D モデル化</strong>
-                <p>BIM/CIMでインフラ構造物を立体的に可視化・設計</p>
-              </div>
-            </div>
-            <div class="dx-step">
-              <span class="dx-step__num">03</span>
-              <div>
-                <strong>ICT施工管理</strong>
-                <p>3Dデータを建機自動制御・出来形管理に直結</p>
-              </div>
-            </div>
-            <div class="dx-step">
-              <span class="dx-step__num">04</span>
-              <div>
-                <strong>維持管理DX</strong>
-                <p>デジタルツインで構造物の状態を継続的に監視</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="dx-feature__visual reveal">
-          <div class="dx-visual">
-            <div class="dx-visual__center">
-              <span>DX</span>
-            </div>
-            <div class="dx-visual__ring dx-visual__ring--1">
-              <div class="dx-visual__item" style="--angle:0deg">UAV</div>
-              <div class="dx-visual__item" style="--angle:90deg">BIM</div>
-              <div class="dx-visual__item" style="--angle:180deg">GIS</div>
-              <div class="dx-visual__item" style="--angle:270deg">ICT</div>
-            </div>
-            <div class="dx-visual__ring dx-visual__ring--2">
-              <div class="dx-visual__item" style="--angle:45deg">AI</div>
-              <div class="dx-visual__item" style="--angle:135deg">3D</div>
-              <div class="dx-visual__item" style="--angle:225deg">IoT</div>
-              <div class="dx-visual__item" style="--angle:315deg">Cloud</div>
-            </div>
-          </div>
-        </div>
+      <div class="section__head section__head--white">
+        <p class="section-tag section-tag--white fade-in">RECRUIT</p>
+        <h2 class="section-title section-title--white fade-in">
+          一緒に<em>未来</em>を<br>つくりませんか
+        </h2>
+        <p class="section-desc section-desc--white fade-in">
+          最先端技術×社会貢献——そんな仕事ができる環境があります。
+        </p>
       </div>
-    </div>
-  </section>
 
-  <!-- RECRUIT -->
-  <section class="section recruit" id="recruit">
-    <div class="recruit__bg"></div>
-    <div class="container">
-      <div class="section__head">
-        <p class="section__tag reveal">RECRUIT</p>
-        <h2 class="section__title reveal">一緒に<span class="accent">未来を</span><br>つくりませんか</h2>
-        <p class="section__subtitle reveal">技術で社会を変えたい。そんな熱い想いを持つ仲間を募集しています。</p>
-      </div>
-      <div class="recruit__grid">
-        <div class="recruit__card reveal">
-          <span class="recruit__card-icon">🎯</span>
-          <h3>最先端技術に触れる環境</h3>
-          <p>BIM/CIM・ドローン・AI解析など、建設×テクノロジーの最前線で働けます。資格取得や研修制度も充実。</p>
+      <div class="recruit__points">
+        <div class="recruit__point fade-in">
+          <div class="recruit__point-icon">🚀</div>
+          <h4>最先端技術に<br>触れられる</h4>
+          <p>BIM・ドローン・AI解析など建設×テクノロジーの最前線。入社後の研修制度・資格取得支援も充実。</p>
         </div>
-        <div class="recruit__card reveal">
-          <span class="recruit__card-icon">📈</span>
-          <h3>若手が活躍できる職場</h3>
-          <p>入社3年目からプロジェクトリーダーへの登用実績多数。年齢・年次に関係なく、実力で評価します。</p>
+        <div class="recruit__point fade-in">
+          <div class="recruit__point-icon">📈</div>
+          <h4>若手が主役の<br>フラットな職場</h4>
+          <p>入社3年目からリーダー登用実績多数。年齢・年次に関係なく実力で評価される環境です。</p>
         </div>
-        <div class="recruit__card reveal">
-          <span class="recruit__card-icon">⚖️</span>
-          <h3>働き方改革を推進中</h3>
-          <p>フレックスタイム制・リモートワーク対応・完全週休2日。メリハリのある働き方を支援しています。</p>
+        <div class="recruit__point fade-in">
+          <div class="recruit__point-icon">⚖️</div>
+          <h4>メリハリある<br>働き方を支援</h4>
+          <p>フレックスタイム制・リモートワーク対応・完全週休2日。充実した福利厚生で長く働ける職場。</p>
         </div>
-        <div class="recruit__card reveal">
-          <span class="recruit__card-icon">🌱</span>
-          <h3>社会に貢献できる仕事</h3>
-          <p>道路・橋・川——地域の人々が毎日使うインフラを自分の手で設計する。やりがいのある仕事です。</p>
+        <div class="recruit__point fade-in">
+          <div class="recruit__point-icon">🌏</div>
+          <h4>地域・社会に<br>貢献できる仕事</h4>
+          <p>自分が設計した道路・橋・川が地域の人々の生活を支える。目に見えるやりがいがあります。</p>
         </div>
       </div>
-      <div class="recruit__positions reveal">
-        <h3 class="recruit__positions-title">募集職種</h3>
-        <div class="recruit__position-list">
-          <div class="recruit__position">
-            <span class="recruit__position-type">新卒採用</span>
+
+      <div class="recruit__jobs">
+        <div class="recruit__job fade-in">
+          <div class="recruit__job-header">
+            <span class="recruit__job-type">新卒採用</span>
             <h4>技術職（設計・測量・DX）</h4>
-            <p>理工系学部卒業・大学院修了見込みの方。専攻不問。CADや測量の経験がなくても一から丁寧に指導します。</p>
-            <a href="#contact" class="btn btn--sm">詳細・エントリー</a>
           </div>
-          <div class="recruit__position">
-            <span class="recruit__position-type">中途採用</span>
-            <h4>BIM/CIM・DX推進エンジニア</h4>
-            <p>3D設計ソフトやICT施工に携わった経験者。既存業務の枠を超えてDX推進を牽引していただきます。</p>
-            <a href="#contact" class="btn btn--sm">詳細・エントリー</a>
+          <p>理工系学部・大学院 卒業見込みの方。専攻・経験不問。一から丁寧に育成します。</p>
+          <a href="#contact" class="btn btn--recruit">詳細・エントリー →</a>
+        </div>
+        <div class="recruit__job fade-in">
+          <div class="recruit__job-header">
+            <span class="recruit__job-type recruit__job-type--mid">中途採用</span>
+            <h4>BIM/CIM・DXエンジニア</h4>
           </div>
-          <div class="recruit__position">
-            <span class="recruit__position-type">中途採用</span>
+          <p>3D設計・ICT施工経験者。業界未経験でもCAD・IT系経験者は歓迎します。</p>
+          <a href="#contact" class="btn btn--recruit">詳細・エントリー →</a>
+        </div>
+        <div class="recruit__job fade-in">
+          <div class="recruit__job-header">
+            <span class="recruit__job-type recruit__job-type--mid">中途採用</span>
             <h4>測量士・測量士補</h4>
-            <p>GNSS測量・UAV測量の経験者優遇。ドローンパイロット資格保持者は給与加算あり。未経験者もご相談ください。</p>
-            <a href="#contact" class="btn btn--sm">詳細・エントリー</a>
           </div>
+          <p>GNSS・UAV測量の経験者優遇。ドローンパイロット資格保持者は給与加算あり。</p>
+          <a href="#contact" class="btn btn--recruit">詳細・エントリー →</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="section__head">
-        <p class="section__tag reveal">CONTACT</p>
-        <h2 class="section__title reveal">お問い合わせ</h2>
-        <p class="section__subtitle reveal">業務に関するご相談・採用に関するお問い合わせはこちらからどうぞ。</p>
-      </div>
-      <div class="contact__layout">
-        <div class="contact__info reveal">
-          <div class="contact__info-item">
-            <span class="contact__info-label">所在地</span>
-            <p>〒000-0000<br>○○県○○市○○町1-2-3</p>
-          </div>
-          <div class="contact__info-item">
-            <span class="contact__info-label">電話番号</span>
-            <p>000-000-0000</p>
-          </div>
-          <div class="contact__info-item">
-            <span class="contact__info-label">FAX</span>
-            <p>000-000-0001</p>
-          </div>
-          <div class="contact__info-item">
-            <span class="contact__info-label">営業時間</span>
-            <p>平日 8:30〜17:30</p>
+<!-- ========== CONTACT ========== -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section__head">
+      <p class="section-tag fade-in">CONTACT</p>
+      <h2 class="section-title fade-in">お問い合わせ</h2>
+      <p class="section-desc fade-in">業務に関するご相談・採用に関するお問い合わせをお待ちしております。</p>
+    </div>
+    <div class="contact__layout">
+      <div class="contact__info fade-in">
+        <h3>●●建設コンサルタント株式会社</h3>
+        <dl>
+          <dt>所在地</dt><dd>〒000-0000<br>○○県○○市○○町1-2-3</dd>
+          <dt>TEL</dt><dd>000-000-0000</dd>
+          <dt>FAX</dt><dd>000-000-0001</dd>
+          <dt>営業時間</dt><dd>平日 8:30〜17:30</dd>
+        </dl>
+        <div class="contact__map">
+          <div class="contact__map-placeholder">
+            <svg viewBox="0 0 360 200" fill="none" style="width:100%;height:100%">
+              <rect width="360" height="200" fill="#e8f0fe"/>
+              <g stroke="#c7d7f5" stroke-width="1.5">
+                <line x1="0" y1="50" x2="360" y2="50"/><line x1="0" y1="100" x2="360" y2="100"/>
+                <line x1="0" y1="150" x2="360" y2="150"/>
+                <line x1="60" y1="0" x2="60" y2="200"/><line x1="120" y1="0" x2="120" y2="200"/>
+                <line x1="180" y1="0" x2="180" y2="200"/><line x1="240" y1="0" x2="240" y2="200"/>
+                <line x1="300" y1="0" x2="300" y2="200"/>
+              </g>
+              <rect x="90" y="70" width="180" height="60" rx="4" fill="#c7d7f5"/>
+              <rect x="150" y="90" width="60" height="40" rx="3" fill="#a8c4f0"/>
+              <circle cx="180" cy="85" r="10" fill="#1a56db"/>
+              <circle cx="180" cy="85" r="5" fill="white"/>
+              <path d="M180 75 L175 95 L185 95 Z" fill="#1a56db"/>
+              <text x="180" y="160" text-anchor="middle" fill="#6b7280" font-size="11" font-family="sans-serif">地図はこちらに表示されます</text>
+            </svg>
           </div>
         </div>
-        <form class="contact__form reveal" id="contactForm">
-          <div class="form__row">
-            <div class="form__group">
-              <label class="form__label" for="name">お名前 <span class="required">*</span></label>
-              <input class="form__input" type="text" id="name" name="name" required placeholder="山田 太郎">
-            </div>
-            <div class="form__group">
-              <label class="form__label" for="company">会社名・学校名</label>
-              <input class="form__input" type="text" id="company" name="company" placeholder="株式会社〇〇">
-            </div>
+      </div>
+      <form class="contact__form fade-in" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>お名前 <span class="req">必須</span></label>
+            <input type="text" name="name" required placeholder="山田 太郎">
           </div>
-          <div class="form__row">
-            <div class="form__group">
-              <label class="form__label" for="email">メールアドレス <span class="required">*</span></label>
-              <input class="form__input" type="email" id="email" name="email" required placeholder="info@example.com">
-            </div>
-            <div class="form__group">
-              <label class="form__label" for="tel">電話番号</label>
-              <input class="form__input" type="tel" id="tel" name="tel" placeholder="000-000-0000">
-            </div>
+          <div class="form-group">
+            <label>会社名・学校名</label>
+            <input type="text" name="company" placeholder="株式会社●●">
           </div>
-          <div class="form__group">
-            <label class="form__label" for="category">お問い合わせ種別 <span class="required">*</span></label>
-            <select class="form__input form__select" id="category" name="category" required>
-              <option value="">選択してください</option>
-              <option value="service">業務・サービスについて</option>
-              <option value="recruit-new">採用（新卒）</option>
-              <option value="recruit-mid">採用（中途）</option>
-              <option value="other">その他</option>
-            </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>メールアドレス <span class="req">必須</span></label>
+            <input type="email" name="email" required placeholder="info@example.com">
           </div>
-          <div class="form__group">
-            <label class="form__label" for="message">お問い合わせ内容 <span class="required">*</span></label>
-            <textarea class="form__input form__textarea" id="message" name="message" required rows="5" placeholder="ご質問・ご相談内容をご記入ください。"></textarea>
+          <div class="form-group">
+            <label>電話番号</label>
+            <input type="tel" name="tel" placeholder="000-000-0000">
           </div>
-          <div class="form__submit">
-            <button type="submit" class="btn btn--primary btn--lg">送信する</button>
+        </div>
+        <div class="form-group">
+          <label>お問い合わせ種別 <span class="req">必須</span></label>
+          <select name="category" required>
+            <option value="">選択してください</option>
+            <option>業務・サービスについて</option>
+            <option>採用（新卒）</option>
+            <option>採用（中途）</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>お問い合わせ内容 <span class="req">必須</span></label>
+          <textarea name="message" required rows="5" placeholder="ご質問・ご相談内容をご記入ください。"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn--submit">送信する</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="container footer__top-inner">
+      <div class="footer__brand">
+        <div class="logo footer__logo">
+          <div class="logo__mark">
+            <svg viewBox="0 0 36 36" fill="none">
+              <polygon points="18,3 33,30 3,30" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+              <line x1="18" y1="12" x2="18" y2="26" stroke="#FF6B2B" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="18" cy="10" r="2.5" fill="#FF6B2B"/>
+            </svg>
           </div>
-        </form>
+          <div class="logo__text">
+            <span class="logo__name" style="color:#fff">●●建設コンサルタント</span>
+            <span class="logo__sub" style="color:rgba(255,255,255,0.6)">株式会社</span>
+          </div>
+        </div>
+        <p class="footer__tagline">技術で、未来の社会を設計する。</p>
+      </div>
+      <nav class="footer__nav">
+        <div>
+          <h5>会社情報</h5>
+          <ul>
+            <li><a href="#about">私たちについて</a></li>
+            <li><a href="#about">経営理念</a></li>
+            <li><a href="#about">会社概要</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>事業内容</h5>
+          <ul>
+            <li><a href="#service">道路・橋梁設計</a></li>
+            <li><a href="#service">河川・砂防設計</a></li>
+            <li><a href="#service">測量・地盤調査</a></li>
+            <li><a href="#service">上下水道設計</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>技術・DX</h5>
+          <ul>
+            <li><a href="#technology">BIM/CIM 3次元設計</a></li>
+            <li><a href="#technology">ドローン・UAV測量</a></li>
+            <li><a href="#technology">ICT施工管理</a></li>
+            <li><a href="#technology">デジタルツイン</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>採用</h5>
+          <ul>
+            <li><a href="#recruit">新卒採用</a></li>
+            <li><a href="#recruit">中途採用</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>&copy; 2025 ●●建設コンサルタント株式会社</p>
+      <div class="footer__bottom-links">
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">サイトマップ</a>
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
-        <div class="footer__brand">
-          <a href="#" class="nav__logo footer__logo">
-            <span class="nav__logo-mark">K</span>
-            <span class="nav__logo-text">共立エンジニアリング</span>
-          </a>
-          <p class="footer__tagline">技術で、未来の社会を設計する。</p>
-        </div>
-        <div class="footer__nav">
-          <div class="footer__nav-col">
-            <h4>会社情報</h4>
-            <ul>
-              <li><a href="#about">会社概要</a></li>
-              <li><a href="#about">経営理念</a></li>
-              <li><a href="#about">沿革</a></li>
-            </ul>
-          </div>
-          <div class="footer__nav-col">
-            <h4>技術・サービス</h4>
-            <ul>
-              <li><a href="#technology">3次元設計 BIM/CIM</a></li>
-              <li><a href="#technology">ドローン測量</a></li>
-              <li><a href="#technology">DX推進支援</a></li>
-              <li><a href="#technology">建設コンサルタント</a></li>
-            </ul>
-          </div>
-          <div class="footer__nav-col">
-            <h4>採用情報</h4>
-            <ul>
-              <li><a href="#recruit">新卒採用</a></li>
-              <li><a href="#recruit">中途採用</a></li>
-              <li><a href="#recruit">社員インタビュー</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p class="footer__copy">&copy; 2025 ●●株式会社 All Rights Reserved.</p>
-        <div class="footer__links">
-          <a href="#">プライバシーポリシー</a>
-          <a href="#">サイトマップ</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+<a href="#top" class="page-top" id="pageTop">▲</a>
 
-  <a href="#hero" class="back-to-top" id="backToTop" aria-label="トップへ戻る">↑</a>
-
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
