@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏀 ミニバスケ 練習メニュー</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f8f8f8; color: #333; }
+
+  /* ヘッダー */
+  header { background: linear-gradient(135deg, #f97316, #ea580c); color: white; padding: 24px 20px 28px; }
+  header .inner { max-width: 960px; margin: 0 auto; }
+  header h1 { font-size: 1.8rem; font-weight: 900; display: flex; align-items: center; gap: 10px; }
+  header p { margin-top: 6px; font-size: 0.85rem; opacity: 0.85; margin-left: 44px; }
+  .header-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; margin-left: 44px; }
+  .header-tag { background: rgba(255,255,255,0.2); color: white; font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 999px; }
+
+  /* ナビ */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid #e5e7eb; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  nav .nav-inner { max-width: 960px; margin: 0 auto; padding: 8px 16px; display: flex; gap: 8px; overflow-x: auto; }
+  nav button { display: flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 999px; border: 2px solid; font-size: 0.82rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: opacity 0.15s; background: transparent; }
+  nav button:hover { opacity: 0.75; }
+
+  /* カテゴリ見出し */
+  .section { max-width: 960px; margin: 0 auto; padding: 40px 16px 0; scroll-margin-top: 70px; }
+  .section-header { display: flex; align-items: center; gap: 12px; border-bottom: 3px solid; padding-bottom: 10px; margin-bottom: 20px; }
+  .section-header h2 { font-size: 1.45rem; font-weight: 900; }
+  .section-header .count { margin-left: auto; font-size: 0.8rem; color: #9ca3af; }
+
+  /* グリッド */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; padding-bottom: 20px; }
+
+  /* カード */
+  .card { border-radius: 14px; border: 2px solid; padding: 16px; display: flex; flex-direction: column; gap: 10px; transition: box-shadow 0.2s; }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .card-title { font-size: 0.97rem; font-weight: 800; line-height: 1.4; }
+  .badge { font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; white-space: nowrap; flex-shrink: 0; }
+  .badge-初級 { background: #dcfce7; color: #15803d; }
+  .badge-中級 { background: #fef9c3; color: #a16207; }
+  .badge-上級 { background: #fee2e2; color: #b91c1c; }
+  .card-desc { font-size: 0.82rem; color: #555; line-height: 1.6; }
+  .card-points { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .card-points li { font-size: 0.78rem; color: #444; display: flex; gap: 6px; align-items: flex-start; }
+  .card-points li::before { content: "▶"; color: #fb923c; font-size: 0.65rem; margin-top: 3px; flex-shrink: 0; }
+  .card-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 4px; }
+  .duration { font-size: 0.75rem; color: #9ca3af; }
+  .video-btn { display: flex; align-items: center; gap: 6px; background: #ef4444; color: white; border: none; border-radius: 8px; padding: 7px 14px; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+  .video-btn:hover { background: #dc2626; }
+  .video-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+  /* モーダル */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.72); z-index: 200; align-items: center; justify-content: center; padding: 16px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: white; border-radius: 18px; width: 100%; max-width: 680px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid #e5e7eb; }
+  .modal-header h3 { font-size: 1rem; font-weight: 800; color: #1f2937; }
+  .modal-close { background: none; border: none; font-size: 1.4rem; color: #9ca3af; cursor: pointer; line-height: 1; }
+  .modal-close:hover { color: #374151; }
+  .video-wrap { position: relative; padding-bottom: 56.25%; }
+  .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .modal-body { padding: 16px 20px; }
+  .modal-body p { font-size: 0.85rem; color: #555; margin-bottom: 10px; line-height: 1.6; }
+  .modal-points { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .modal-points li { font-size: 0.82rem; color: #374151; display: flex; gap: 8px; align-items: flex-start; }
+  .modal-points li::before { content: "✓"; color: #f97316; font-weight: 900; flex-shrink: 0; }
+
+  /* フッター */
+  footer { text-align: center; font-size: 0.75rem; color: #bbb; padding: 40px 16px 32px; border-top: 1px solid #e5e7eb; margin-top: 40px; max-width: 960px; margin-left: auto; margin-right: auto; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.35rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <h1>🏀 ミニバスケ 練習メニュー</h1>
+    <p>全29メニュー・動画つきで分かりやすく解説</p>
+    <div class="header-tags">
+      <span class="header-tag">🏃 ウォームアップ 6種</span>
+      <span class="header-tag">🤲 ハンドリング 7種</span>
+      <span class="header-tag">🏀 シュート 8種</span>
+      <span class="header-tag">⛹️ ドリブル 8種</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button onclick="scrollTo('warmup')" style="border-color:#fb923c;color:#ea580c;background:#fff7ed;">🏃 ウォーミングアップ</button>
+    <button onclick="scrollTo('handling')" style="border-color:#93c5fd;color:#2563eb;background:#eff6ff;">🤲 ハンドリング</button>
+    <button onclick="scrollTo('shooting')" style="border-color:#86efac;color:#16a34a;background:#f0fdf4;">🏀 シュート</button>
+    <button onclick="scrollTo('dribbling')" style="border-color:#c4b5fd;color:#7c3aed;background:#f5f3ff;">⛹️ ドリブル</button>
+  </div>
+</nav>
+
+<main id="main"></main>
+
+<footer>
+  <p>練習の際は必ず準備運動を行い、安全に取り組みましょう。</p>
+  <p style="margin-top:4px;">動画は YouTube より提供されています。</p>
+</footer>
+
+<!-- モーダル -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modal-title"></h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="video-wrap">
+      <iframe id="modal-iframe" src="" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <div class="modal-body">
+      <p id="modal-desc"></p>
+      <ul class="modal-points" id="modal-points"></ul>
+    </div>
+  </div>
+</div>
+
+<script>
+const categories = [
+  {
+    id: "warmup", label: "ウォーミングアップ", emoji: "🏃",
+    titleColor: "#ea580c", borderColor: "#fed7aa", bg: "#fff7ed", hdrBorder: "#fb923c",
+    drills: [
+      { title: "ボールを使ったストレッチ", desc: "ボールを持ちながら全身をほぐす基本ストレッチ。練習前に必ず行い、怪我を予防しましょう。", duration: "5分", level: "初級", points: ["ボールを頭上に持ち上げ体側を伸ばす","ボールを股の間でくぐらせながら前屈","各ポーズで10秒キープ"], yt: "atuFSCcBjZc" },
+      { title: "ラインドリル（ライン上の運動）", desc: "コートのラインを使ったステップ練習。フットワークの基礎を身につける。", duration: "5〜10分", level: "初級", points: ["サイドステップ・カリオカ・バックランを組み合わせる","腰を低く保ちながら動く","着地はつま先から静かに"], yt: "dJpBGTFNYwc" },
+      { title: "ボールハンドリングウォームアップ", desc: "両手でボールを素早く扱い、手首・指先を温める定番ルーティン。", duration: "5分", level: "初級", points: ["フィンガーチップスで指先を鍛える","ボールを素早く左右に移動","リズムよく継続する"], yt: "OIXQW_ZIqDE" },
+      { title: "ジャンピングジャック＆スクワット", desc: "全身の血流を上げ、脚の筋肉を温める。試合中の急な動き出しに備える準備運動。", duration: "3〜5分", level: "初級", points: ["ジャンピングジャック20回→スクワット10回を2セット","スクワットは膝がつま先より前に出ないように","呼吸を止めず一定のリズムで行う"], yt: "UpH7rm0cYpE" },
+      { title: "バックペダル＆スプリント", desc: "後ろ向き走りからの切り返しダッシュ。コートでのディフェンス動作に直結する動き。", duration: "5分", level: "初級", points: ["5mバックペダル→振り返って5mダッシュ","振り返りは素早くしっかり体全体を回す","3〜5往復を目安に"], yt: "dJpBGTFNYwc" },
+      { title: "コアアクティベーション（体幹起動）", desc: "プランクやヒップブリッジで体幹を目覚めさせる。ジャンプや体のぶつかり合いに強い体を作る。", duration: "5分", level: "初級", points: ["プランク30秒・サイドプランク各15秒","お腹を軽く引き込み腰を反らせない","呼吸を止めず行う"], yt: "pSHjTRCQxIw" },
+    ]
+  },
+  {
+    id: "handling", label: "ハンドリング", emoji: "🤲",
+    titleColor: "#2563eb", borderColor: "#bfdbfe", bg: "#eff6ff", hdrBorder: "#93c5fd",
+    drills: [
+      { title: "マッシャー（ボールを押しつぶす感覚）", desc: "ボールをしっかり指先で捉える感覚を養う基礎ハンドリング。ミニバスの基本中の基本。", duration: "3〜5分", level: "初級", points: ["指全体でボールを包み込む","素早く交互に押す","視線はボールを見ず正面を向く"], yt: "gCNJBi_ILYE" },
+      { title: "エイトボールハンドリング", desc: "ボールを8の字に通す練習。足の間を素早くさばく動作でハンドリング力を高める。", duration: "3〜5分", level: "初級", points: ["両足を肩幅より広めに開く","前後交互に手を入れ替える","なるべく速くリズムよく行う"], yt: "9DnmCLvNDdM" },
+      { title: "ワンハンドキャッチ", desc: "片手でのキャッチングを鍛えるドリル。試合でのルーズボール対応力が上がる。", duration: "5分", level: "中級", points: ["トスを高く上げてから片手でキャッチ","左右交互に行う","指を広げてしっかり受け止める"], yt: "qZYbchcHx0o" },
+      { title: "ウォールパス（壁パス）", desc: "壁に向かって素早くパスを繰り返し、正確なパスと素早いキャッチを身につける。", duration: "5〜10分", level: "中級", points: ["チェストパスとバウンズパスを交互に","壁から1〜2m離れて行う","パスの後すぐに構える"], yt: "NhE6BPCVD_M" },
+      { title: "ネックロール＆ウエストロール", desc: "ボールを首・腰周りに高速で回すドリル。手首の柔軟性と指の感覚を磨く。", duration: "3〜5分", level: "初級", points: ["首→腰→膝の順に回す場所を変える","ボールを落とさないよう集中する","左回り・右回りを交互に行う"], yt: "gCNJBi_ILYE" },
+      { title: "ツーボールハンドリング", desc: "2つのボールを同時に扱う上級ドリル。両手の独立したコントロール力を飛躍的に高める。", duration: "5〜10分", level: "上級", points: ["まず両手同時バウンドから始める","慣れたら交互バウンドに挑戦","顔は上げてボールを見ない"], yt: "gCNJBi_ILYE" },
+      { title: "スパイダードリル", desc: "ボールを床に置いた状態で4点タッチを繰り返す。素早い手の動きと集中力を養う。", duration: "3〜5分", level: "中級", points: ["前→前→後→後の順で素早くタッチ","指先でリズムよく叩く","慣れたら逆順でも行う"], yt: "9DnmCLvNDdM" },
+    ]
+  },
+  {
+    id: "shooting", label: "シュート", emoji: "🏀",
+    titleColor: "#16a34a", borderColor: "#bbf7d0", bg: "#f0fdf4", hdrBorder: "#86efac",
+    drills: [
+      { title: "フォームシューティング（ワンハンド）", desc: "シュートフォームの基礎。片手でボールをコントロールし、正しいリリースポイントを習得する。", duration: "10分", level: "初級", points: ["ひじをゴールに向けて真っすぐ","リリース時に手首をスナップ","フォロースルーを最後まで"], yt: "FISbQVcJTXE" },
+      { title: "ミドルシュート練習", desc: "ゴール近くからミドルレンジで正確にシュートを決める練習。ミニバスで最も使うシュートゾーン。", duration: "10〜15分", level: "初級", points: ["ゴール正面・45度・サイドの3か所から打つ","バックボードをうまく使う","毎回同じフォームを意識"], yt: "Q1fBSKcEOOQ" },
+      { title: "レイアップシュート", desc: "ゴールへのドライブからフィニッシュするレイアップ。右・左どちらからも決められるよう練習する。", duration: "10〜15分", level: "初級", points: ["右から：右足→左足→右手で打つ","左から：左足→右足→左手で打つ","バックボードの高い位置を狙う"], yt: "ZT4PvSGG2Vc" },
+      { title: "キャッチ＆シュート", desc: "パスを受け取ってすぐにシュートする練習。試合で多い「もらってすぐ打つ」場面を想定。", duration: "10〜15分", level: "中級", points: ["両足でしっかり止まってから打つ","パスを受けながらジャンプの準備をする","受け取りからリリースまでをスムーズに"], yt: "StuvqQBpSqw" },
+      { title: "ガラスシュート（バンクショット）", desc: "バックボードを意図的に使うシュート。角度のあるポジションから高確率で得点するテクニック。", duration: "10分", level: "初級", points: ["45度の位置からボードの四角を狙う","高めのアーチをかける","力を抜いて柔らかく打つ"], yt: "Q1fBSKcEOOQ" },
+      { title: "フリースロー練習", desc: "試合の勝敗を左右するフリースロー。ルーティンを決めて毎回同じ動作で打てるようにする。", duration: "10分", level: "初級", points: ["打つ前のルーティン（バウンド回数など）を固定する","膝を曲げてエネルギーを足から伝える","目を閉じてイメージしてから打つ練習も有効"], yt: "FISbQVcJTXE" },
+      { title: "動きながらのシュート（ムービングシュート）", desc: "カットやフォワードの動きからボールをもらってそのままシュートする実戦的な練習。", duration: "15分", level: "中級", points: ["動きの最後に足をそろえてから打つ","パスの方向に体を向ける","ゴールから目を離さない"], yt: "StuvqQBpSqw" },
+      { title: "ミートシュート（V字カット）", desc: "V字カットでフリーになりパスを受けてシュートするコンビネーション。試合の得点パターンに直結する。", duration: "15分", level: "上級", points: ["ディフェンスを引きつけてから鋭く切り返す","カットの方向にパスが出てくることを予測する","もらった瞬間にシュート体勢を作る"], yt: "StuvqQBpSqw" },
+    ]
+  },
+  {
+    id: "dribbling", label: "ドリブル", emoji: "⛹️",
+    titleColor: "#7c3aed", borderColor: "#ddd6fe", bg: "#f5f3ff", hdrBorder: "#c4b5fd",
+    drills: [
+      { title: "定位置ドリブル（低・高）", desc: "その場でドリブルを続け、低いドリブルと高いドリブルを交互に切り替える基本練習。", duration: "3〜5分", level: "初級", points: ["低いドリブルは膝より下","高いドリブルは腰の高さ","指先でコントロールし手のひらは使わない"], yt: "JGwRGkAojMg" },
+      { title: "クロスオーバードリブル", desc: "左右に素早くボールを移動させる技術。ディフェンスをかわすための基本テクニック。", duration: "5〜10分", level: "初級", points: ["低い姿勢を維持する","ボールを横に押し出すイメージ","顔は上げて前を見る"], yt: "Lf3uMmVjO5E" },
+      { title: "ドリブルからのストップ", desc: "ドリブルを突きながら走り、正確にジャンプストップする練習。オフェンスの基礎動作。", duration: "10分", level: "初級", points: ["両足同時のジャンプストップを覚える","止まった後に軸足を決める","バランスを崩さず止まる"], yt: "6NRNRZ3d7eg" },
+      { title: "コーンドリブル（スラロームドリル）", desc: "コーンを置いてジグザグにドリブルする練習。ボール操作とフットワークを同時に鍛える。", duration: "10〜15分", level: "中級", points: ["コーンとコーンの間隔は約1.5m","体の向きを変えながらドリブルする","スピードより正確さを優先"], yt: "Qm0mkMBrX3U" },
+      { title: "レッグスルードリブル", desc: "足の間にボールを通しながら前進するドリブル。ディフェンスをかわす実戦的なテクニック。", duration: "5〜10分", level: "中級", points: ["歩くリズムに合わせて足と手を連動させる","最初はゆっくり動作を確認してから","慣れたらスピードを上げる"], yt: "Lf3uMmVjO5E" },
+      { title: "ビハインドザバックドリブル", desc: "背中の後ろでボールを回すドリブルチェンジ。方向転換とフェイクを組み合わせた上級テクニック。", duration: "10分", level: "上級", points: ["腰を落として安定した姿勢で行う","背中でボールを通す弧を大きくイメージする","左右どちらからも行えるように練習する"], yt: "Qm0mkMBrX3U" },
+      { title: "フルコートドリブル突破", desc: "コートの端から端まで全力でドリブルして戻る練習。スピードと体力・ボールコントロールを同時に鍛える。", duration: "10〜15分", level: "中級", points: ["右手・左手交互にコースを変えて行う","スピードを落とさずにボールを前に押し出す","3〜5往復を目安に"], yt: "6NRNRZ3d7eg" },
+      { title: "ヘジテーションドリブル（緩急）", desc: "スピードを急に落として相手のバランスを崩す緩急ドリブル。試合でのドライブに欠かせない技術。", duration: "10分", level: "上級", points: ["全力→急停止→再加速の動作を繰り返す","止まる瞬間に重心を低くする","相手の反応を見てからアクセルを踏む"], yt: "Lf3uMmVjO5E" },
+    ]
+  }
+];
+
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+function openModal(title, desc, points, ytId) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-desc').textContent = desc;
+  const ul = document.getElementById('modal-points');
+  ul.innerHTML = points.map(p => `<li>${p}</li>`).join('');
+  document.getElementById('modal-iframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1`;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modal')) return;
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('modal-iframe').src = '';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal({}); document.getElementById('modal').classList.remove('open'); document.getElementById('modal-iframe').src=''; document.body.style.overflow=''; });
+
+// レンダリング
+const main = document.getElementById('main');
+categories.forEach(cat => {
+  const section = document.createElement('section');
+  section.className = 'section';
+  section.id = cat.id;
+
+  section.innerHTML = `
+    <div class="section-header" style="border-color:${cat.hdrBorder};">
+      <span style="font-size:1.8rem;">${cat.emoji}</span>
+      <h2 style="color:${cat.titleColor};">${cat.label}</h2>
+      <span class="count">${cat.drills.length}メニュー</span>
+    </div>
+    <div class="grid"></div>
+  `;
+
+  const grid = section.querySelector('.grid');
+  cat.drills.forEach(drill => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.cssText = `border-color:${cat.borderColor};background:${cat.bg};`;
+    card.innerHTML = `
+      <div class="card-top">
+        <span class="card-title" style="color:${cat.titleColor};">${drill.title}</span>
+        <span class="badge badge-${drill.level}">${drill.level}</span>
+      </div>
+      <p class="card-desc">${drill.desc}</p>
+      <ul class="card-points">${drill.points.map(p=>`<li>${p}</li>`).join('')}</ul>
+      <div class="card-bottom">
+        <span class="duration">⏱ ${drill.duration}</span>
+        <button class="video-btn" onclick="openModal('${drill.title.replace(/'/g,"\\'")}','${drill.desc.replace(/'/g,"\\'")}',${JSON.stringify(drill.points)},'${drill.yt}')">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          動画を見る
+        </button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  main.appendChild(section);
+});
+</script>
+</body>
+</html>
