@@ -1,0 +1,251 @@
+/* ==================== 基本 ==================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #1e6091;
+  --primary-dark: #164e75;
+  --bg: #f2f5f8;
+  --card: #ffffff;
+  --border: #d7dee5;
+  --text: #26323c;
+  --muted: #6b7885;
+  --danger: #c0392b;
+  --accent-bg: #e8f1f8;
+  --sat: #3a7bbf;
+  --sun: #c0392b;
+}
+
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Meiryo", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ==================== ヘッダー・タブ ==================== */
+.app-header {
+  background: var(--primary);
+  color: #fff;
+  padding: 14px 24px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.app-header h1 { font-size: 20px; margin-bottom: 10px; }
+
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+
+.tab {
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 9px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+.tab:hover { background: rgba(255, 255, 255, 0.3); }
+.tab.active { background: var(--bg); color: var(--primary); font-weight: bold; }
+
+/* ==================== レイアウト ==================== */
+main { max-width: 1200px; margin: 0 auto; padding: 20px 16px 60px; }
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 { font-size: 17px; margin-bottom: 14px; color: var(--primary-dark); }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.card-header h2 { margin-bottom: 0; }
+
+.master-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 20px; }
+@media (max-width: 900px) { .master-grid { grid-template-columns: 1fr; } }
+
+/* ==================== フォーム ==================== */
+.form-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.form-row label { display: flex; flex-direction: column; font-size: 13px; color: var(--muted); gap: 4px; }
+
+select, input[type="text"], input[type="date"], input[type="month"], input[type="number"] {
+  font-size: 15px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+}
+
+select:focus, input:focus { outline: 2px solid var(--primary); outline-offset: -1px; }
+
+.inline-form { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.inline-form input { flex: 1; min-width: 120px; }
+.inline-form input.short { flex: 0 0 130px; }
+
+.date-shortcuts { display: flex; gap: 6px; padding-bottom: 2px; }
+
+/* ==================== ボタン ==================== */
+.btn {
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover { background: var(--accent-bg); }
+.btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; font-weight: bold; }
+.btn.primary:hover { background: var(--primary-dark); }
+.btn.small { padding: 5px 10px; font-size: 13px; }
+.btn.danger-text { color: var(--danger); }
+
+.form-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+
+/* ==================== テーブル共通 ==================== */
+table { border-collapse: collapse; width: 100%; }
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 7px 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+th { background: var(--accent-bg); color: var(--primary-dark); font-weight: bold; }
+
+.right { text-align: right; }
+.center { text-align: center; }
+.bold { font-weight: bold; }
+.muted { color: var(--muted); font-weight: normal; font-size: 13px; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.table-scroll { overflow-x: auto; }
+
+/* ==================== 日報入力テーブル ==================== */
+.entry-table { margin-top: 4px; }
+.entry-table .col-task { width: 45%; }
+.entry-table .col-hours { width: 110px; }
+.entry-table .col-del { width: 44px; }
+.entry-table select, .entry-table input { width: 100%; }
+.entry-table input[type="number"] { text-align: right; }
+
+.row-del {
+  border: none;
+  background: none;
+  color: var(--danger);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+
+.hint { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+/* ==================== 履歴 ==================== */
+.history-day { margin-bottom: 8px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.history-day summary {
+  cursor: pointer;
+  padding: 8px 14px;
+  background: var(--accent-bg);
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.history-day table { border: none; }
+.history-day td, .history-day th { border-left: none; border-right: none; }
+
+/* ==================== 集計テーブル ==================== */
+.summary-table th.rotate { min-width: 72px; }
+.summary-table td.total-col, .summary-table th.total-col { background: #fdf6e3; font-weight: bold; }
+.summary-table tr.total-row td { background: #fdf6e3; font-weight: bold; }
+.summary-table td.zero { color: #c3ccd4; }
+
+.toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+/* 業務別集計の棒グラフ */
+.bar-cell { min-width: 220px; }
+.bar {
+  background: var(--primary);
+  height: 16px;
+  border-radius: 3px;
+  min-width: 2px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ==================== 入力状況 ==================== */
+.status-table th, .status-table td { padding: 4px 6px; font-size: 12.5px; text-align: center; white-space: nowrap; }
+.status-table th.name-col, .status-table td.name-col { text-align: left; min-width: 100px; position: sticky; left: 0; background: var(--card); z-index: 1; }
+.status-table th.name-col { background: var(--accent-bg); }
+.status-table .sat { color: var(--sat); }
+.status-table .sun { color: var(--sun); }
+.status-table td.filled { background: #e3f2e8; }
+.status-table td.missing-weekday { background: #fdeaea; }
+
+/* ==================== マスタテーブル ==================== */
+.master-table td .btn { margin-right: 4px; }
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 1px 10px;
+  border-radius: 10px;
+  background: #e3f2e8;
+  color: #22713e;
+}
+.badge.off { background: #eceff2; color: var(--muted); }
+tr.inactive td { color: var(--muted); background: #fafbfc; }
+
+/* ==================== 空表示・トースト ==================== */
+.empty {
+  padding: 30px;
+  text-align: center;
+  color: var(--muted);
+  background: #fafbfc;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+}
+
+#toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 100;
+  max-width: 90vw;
+}
+
+#toast.show { opacity: 1; }
+#toast.error { background: var(--danger); }

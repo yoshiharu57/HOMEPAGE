@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務日報・労務管理</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>📋 業務日報・労務管理</h1>
+  <nav class="tabs">
+    <button class="tab active" data-tab="entry">日報入力</button>
+    <button class="tab" data-tab="summary">月次総括表</button>
+    <button class="tab" data-tab="bytask">業務別集計</button>
+    <button class="tab" data-tab="status">入力状況</button>
+    <button class="tab" data-tab="master">マスタ管理</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ==================== 日報入力 ==================== -->
+<section id="tab-entry" class="panel active">
+  <div class="card">
+    <h2>日報入力</h2>
+    <div class="form-row">
+      <label>技術者
+        <select id="entry-employee"></select>
+      </label>
+      <label>日付
+        <input type="date" id="entry-date">
+      </label>
+      <div class="date-shortcuts">
+        <button class="btn small" id="btn-today">今日</button>
+        <button class="btn small" id="btn-yesterday">昨日</button>
+      </div>
+    </div>
+
+    <table class="entry-table">
+      <thead>
+        <tr><th class="col-task">業務</th><th class="col-hours">時間</th><th class="col-note">備考</th><th class="col-del"></th></tr>
+      </thead>
+      <tbody id="entry-rows"></tbody>
+      <tfoot>
+        <tr><td class="right bold">合計</td><td class="bold" id="entry-total">0</td><td colspan="2"></td></tr>
+      </tfoot>
+    </table>
+
+    <div class="form-actions">
+      <button class="btn" id="btn-add-row">＋ 行を追加</button>
+      <button class="btn primary" id="btn-save-day">この日の日報を保存</button>
+    </div>
+    <p class="hint">※ 保存すると、その技術者・その日の内容がまとめて上書きされます。修正するときも同じ画面で保存し直してください。</p>
+  </div>
+
+  <div class="card">
+    <h2>今月の入力履歴 <span class="muted" id="history-emp-name"></span></h2>
+    <div id="entry-history"></div>
+  </div>
+</section>
+
+<!-- ==================== 月次総括表 ==================== -->
+<section id="tab-summary" class="panel">
+  <div class="card">
+    <div class="card-header">
+      <h2>月次総括表(技術者 × 業務)</h2>
+      <div class="toolbar">
+        <button class="btn small" id="summary-prev">◀ 前月</button>
+        <input type="month" id="summary-month">
+        <button class="btn small" id="summary-next">翌月 ▶</button>
+        <a class="btn" id="btn-csv-summary" href="#">総括表CSV</a>
+        <a class="btn" id="btn-csv-entries" href="#">明細CSV</a>
+      </div>
+    </div>
+    <div class="table-scroll" id="summary-table"></div>
+  </div>
+</section>
+
+<!-- ==================== 業務別集計 ==================== -->
+<section id="tab-bytask" class="panel">
+  <div class="card">
+    <div class="card-header">
+      <h2>業務別集計</h2>
+      <div class="toolbar">
+        <button class="btn small" id="bytask-prev">◀ 前月</button>
+        <input type="month" id="bytask-month">
+        <button class="btn small" id="bytask-next">翌月 ▶</button>
+      </div>
+    </div>
+    <div id="bytask-table"></div>
+  </div>
+</section>
+
+<!-- ==================== 入力状況 ==================== -->
+<section id="tab-status" class="panel">
+  <div class="card">
+    <div class="card-header">
+      <h2>入力状況(未入力チェック)</h2>
+      <div class="toolbar">
+        <button class="btn small" id="status-prev">◀ 前月</button>
+        <input type="month" id="status-month">
+        <button class="btn small" id="status-next">翌月 ▶</button>
+      </div>
+    </div>
+    <p class="hint">数字はその日の合計時間です。平日で空欄のところが未入力です。</p>
+    <div class="table-scroll" id="status-table"></div>
+  </div>
+</section>
+
+<!-- ==================== マスタ管理 ==================== -->
+<section id="tab-master" class="panel">
+  <div class="master-grid">
+    <div class="card">
+      <h2>技術者マスタ</h2>
+      <form id="form-employee" class="inline-form">
+        <input type="text" id="new-employee-name" placeholder="氏名(例: 山田 太郎)" required>
+        <button class="btn primary" type="submit">追加</button>
+      </form>
+      <table class="master-table" id="employee-table">
+        <thead><tr><th>氏名</th><th>状態</th><th>操作</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>業務マスタ</h2>
+      <form id="form-task" class="inline-form">
+        <input type="text" id="new-task-code" placeholder="業務番号(任意)" class="short">
+        <input type="text" id="new-task-name" placeholder="業務名(例: ○○川橋梁詳細設計)" required>
+        <button class="btn primary" type="submit">追加</button>
+      </form>
+      <table class="master-table" id="task-table">
+        <thead><tr><th>業務番号</th><th>業務名</th><th>状態</th><th>操作</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="hint">※ 終了した業務は「無効」にすると入力画面に出なくなります(過去の集計はそのまま残ります)。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

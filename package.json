@@ -1,0 +1,13 @@
+{
+  "name": "gyoumu-nippou",
+  "version": "1.0.0",
+  "description": "業務日報・労務管理アプリ(建設コンサルタント向け)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
+}
