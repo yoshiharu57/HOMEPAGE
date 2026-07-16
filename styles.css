@@ -168,9 +168,9 @@ main {
 
 .hero h1 {
   margin: 0;
-  max-width: 11ch;
-  font-size: clamp(42px, 6.2vw, 74px);
-  line-height: 1.05;
+  max-width: 13ch;
+  font-size: clamp(36px, 5.2vw, 62px);
+  line-height: 1.12;
   letter-spacing: 0;
 }
 
@@ -673,7 +673,7 @@ svg {
 
   .hero h1 {
     max-width: 100%;
-    font-size: 38px;
+    font-size: 32px;
   }
 
   .lead {
