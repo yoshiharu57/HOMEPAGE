@@ -989,7 +989,7 @@ function renderMembers() {
             <h3>${esc(member.name)}</h3>
             <p class="role">${esc(member.role || "")} ／ 稼働可能率 ${member.capacityRate || 100}%</p>
           </div>
-          <button type="button" class="icon-button" data-edit-member="${member.id}" aria-label="編集"><i data-lucide="pencil"></i></button>
+          <button type="button" class="icon-button" data-edit-member="${member.id}" aria-label="編集"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
         </div>
         <div class="load-top">
           <span class="load-sub">基準月 ${state.baseMonth} の稼働率</span>
