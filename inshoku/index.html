@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>飲食店マーケティング戦略 | 建設DXコンサルタントTK</title>
+    <meta
+      name="description"
+      content="飲食店向けのマーケティング戦略づくりアプリ。店舗の現状分析、集客施策の優先順位、売上目標の逆算、販促カレンダー、投稿文の作成、効果測定、提案書の印刷まで。"
+    />
+    <meta name="theme-color" content="#b45309" />
+    <link rel="stylesheet" href="./styles.css?v=20261118" />
+    <script src="./data.js?v=20261118" defer></script>
+    <script src="./app.js?v=20261118" defer></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="../index.html" aria-label="建設DXコンサルタントTK トップへ">
+        <span class="brand-mark" aria-hidden="true">TK</span>
+        <span>
+          <strong>飲食店マーケティング戦略</strong>
+          <small>集客の計画から実行・振り返りまで</small>
+        </span>
+      </a>
+
+      <div class="store-switch">
+        <label>
+          <span>店舗</span>
+          <select data-store-select aria-label="表示する店舗"></select>
+        </label>
+        <button type="button" class="button ghost" data-action="new-store">＋ 店舗を追加</button>
+      </div>
+
+      <div class="header-tools">
+        <button type="button" class="button ghost" data-action="export">バックアップ</button>
+        <button type="button" class="button ghost" data-action="import">読込</button>
+        <input type="file" accept="application/json" hidden data-import-file />
+      </div>
+    </header>
+
+    <nav class="app-nav" aria-label="画面切り替え">
+      <button type="button" class="tab is-active" data-view="home">ホーム</button>
+      <button type="button" class="tab" data-view="profile">① 店舗情報</button>
+      <button type="button" class="tab" data-view="strategy">② 戦略・施策</button>
+      <button type="button" class="tab" data-view="goal">③ 目標の逆算</button>
+      <button type="button" class="tab" data-view="calendar">④ 販促カレンダー</button>
+      <button type="button" class="tab" data-view="posts">⑤ 投稿文づくり</button>
+      <button type="button" class="tab" data-view="records">⑥ 効果測定</button>
+      <button type="button" class="tab" data-view="proposal">提案書</button>
+    </nav>
+
+    <main class="app-main">
+      <!-- ホーム -->
+      <section class="view is-active" data-view-panel="home">
+        <div class="view-head">
+          <p class="eyebrow">ホーム</p>
+          <h1 data-home-title>お店の集客を、やることリストまで落とし込む。</h1>
+          <p class="lead">①〜⑥の順に進めると、お店に合った集客の計画ができあがります。入力した内容はこのブラウザに保存されます。</p>
+        </div>
+        <div class="kpi-row" data-home-kpi></div>
+        <div class="grid-2">
+          <section class="panel">
+            <h2>まず取り組む施策 TOP3</h2>
+            <div data-home-top></div>
+          </section>
+          <section class="panel">
+            <h2>今月やること</h2>
+            <div data-home-todo></div>
+          </section>
+        </div>
+        <section class="panel steps-panel">
+          <h2>使い方</h2>
+          <ol class="steps">
+            <li><b>① 店舗情報</b>：業態、立地、客単価、困っていることを入力します。</li>
+            <li><b>② 戦略・施策</b>：お店の強みと弱み、狙う客層、効果が出やすい施策を優先順に表示します。</li>
+            <li><b>③ 目標の逆算</b>：目標の売上から、1日に必要な客数や新規客の数を計算します。</li>
+            <li><b>④ 販促カレンダー</b>：季節のイベントに合わせて、月ごとのやることをチェックリストにします。</li>
+            <li><b>⑤ 投稿文づくり</b>：Instagram、Googleマップ、LINEの投稿文をひな形から作ります。</li>
+            <li><b>⑥ 効果測定</b>：毎月の売上や客数を記録して、目標との差を確認します。</li>
+            <li><b>提案書</b>：ここまでの内容を1枚にまとめて印刷やPDF保存ができます。</li>
+          </ol>
+        </section>
+      </section>
+
+      <!-- 店舗情報 -->
+      <section class="view" data-view-panel="profile">
+        <div class="view-head">
+          <p class="eyebrow">① 店舗情報</p>
+          <h1>お店のことを教えてください。</h1>
+          <p class="lead">わかる範囲で大丈夫です。入力するとすぐに保存され、②以降の内容に反映されます。</p>
+        </div>
+        <form class="panel form-grid" data-profile-form autocomplete="off"></form>
+        <div class="danger-zone">
+          <button type="button" class="button danger" data-action="delete-store">この店舗を削除</button>
+        </div>
+      </section>
+
+      <!-- 戦略 -->
+      <section class="view" data-view-panel="strategy">
+        <div class="view-head">
+          <p class="eyebrow">② 戦略・施策</p>
+          <h1>お店の現状と、効果が出やすい施策。</h1>
+          <p class="lead">店舗情報から自動で整理しています。点数は「困りごと」「今の対策状況」「予算と時間」から計算した優先度です。</p>
+        </div>
+        <div class="grid-2">
+          <section class="panel">
+            <h2>現状の整理（強み・弱み・機会・注意点）</h2>
+            <div class="swot" data-swot></div>
+          </section>
+          <section class="panel">
+            <h2>狙う客層</h2>
+            <div data-targets></div>
+            <h2 class="mt">集客の流れ（どこが手薄か）</h2>
+            <div class="funnel" data-funnel></div>
+          </section>
+        </div>
+        <section class="panel">
+          <h2>おすすめ施策（優先順）</h2>
+          <div class="measure-list" data-measures></div>
+        </section>
+      </section>
+
+      <!-- 目標 -->
+      <section class="view" data-view-panel="goal">
+        <div class="view-head">
+          <p class="eyebrow">③ 目標の逆算</p>
+          <h1>目標の売上から、必要な客数を逆算。</h1>
+          <p class="lead">「仮定」の数字は一般的な目安として入れています。お店の実績に合わせて変えてください。</p>
+        </div>
+        <div class="grid-2">
+          <form class="panel form-grid one-col" data-goal-form autocomplete="off"></form>
+          <section class="panel">
+            <h2>計算結果</h2>
+            <div data-goal-result></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- カレンダー -->
+      <section class="view" data-view-panel="calendar">
+        <div class="view-head row">
+          <div>
+            <p class="eyebrow">④ 販促カレンダー</p>
+            <h1>季節に合わせて、月ごとにやることを決める。</h1>
+          </div>
+          <label class="inline-field">
+            <span>表示する月</span>
+            <input type="month" data-cal-month />
+          </label>
+        </div>
+        <section class="panel">
+          <h2>今月の販促テーマ</h2>
+          <div class="event-grid" data-cal-events></div>
+        </section>
+        <section class="panel">
+          <h2>実行チェックリスト</h2>
+          <p class="note">終わったらチェックを入れてください。進み具合はホームに表示されます。</p>
+          <div data-cal-tasks></div>
+        </section>
+      </section>
+
+      <!-- 投稿文 -->
+      <section class="view" data-view-panel="posts">
+        <div class="view-head">
+          <p class="eyebrow">⑤ 投稿文づくり</p>
+          <h1>投稿文をひな形から作る。</h1>
+          <p class="lead">内容を入れると3パターンの文面ができます。コピーして、写真に合わせて少し手直ししてから投稿してください。</p>
+        </div>
+        <div class="grid-2">
+          <form class="panel form-grid one-col" data-post-form autocomplete="off"></form>
+          <section class="panel">
+            <h2>できた文面</h2>
+            <div data-post-result></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- 効果測定 -->
+      <section class="view" data-view-panel="records">
+        <div class="view-head">
+          <p class="eyebrow">⑥ 効果測定</p>
+          <h1>毎月の数字を記録して、施策の効果を見る。</h1>
+          <p class="lead">月に1回、わかる数字だけ入れてください。空欄でも大丈夫です。</p>
+        </div>
+        <section class="panel">
+          <h2>今月の数字を記録</h2>
+          <form class="form-grid record-form" data-record-form autocomplete="off"></form>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <h2>推移</h2>
+            <select data-chart-metric aria-label="グラフに表示する項目"></select>
+          </div>
+          <div class="chart" data-chart></div>
+        </section>
+        <section class="panel">
+          <h2>記録一覧</h2>
+          <div class="table-wrap" data-record-table></div>
+        </section>
+      </section>
+
+      <!-- 提案書 -->
+      <section class="view" data-view-panel="proposal">
+        <div class="view-head row no-print">
+          <div>
+            <p class="eyebrow">提案書</p>
+            <h1>ここまでの内容を1枚にまとめる。</h1>
+          </div>
+          <button type="button" class="button primary" data-action="print">印刷・PDF保存</button>
+        </div>
+        <article class="proposal" data-proposal></article>
+      </section>
+    </main>
+
+    <div class="toast" data-toast role="status" aria-live="polite"></div>
+  </body>
+</html>
