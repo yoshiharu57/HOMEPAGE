@@ -93,7 +93,11 @@ function blankStore(name = "新しい店舗") {
     records: [],
     post: { channel: "Instagram", purpose: "新メニュー", topic: "", price: "", point: "", period: "" },
     competitors: [],
-    c3: { customerNotes: "" }
+    c3: { customerNotes: "" },
+    menu: [],
+    p4: { product: "", price: "", place: "", promotion: "" },
+    roi: [],
+    roiCostRate: ""
   };
 }
 
@@ -141,6 +145,24 @@ function sampleStore() {
     { id: uid(), name: "B：近所の老舗の和食店", genre: "和食・割烹", distance: "徒歩8分", lunchPrice: 1300, dinnerPrice: 5000, rating: 4.3, reviews: 120, igFollowers: 300, features: ["駐車場あり", "個室・宴会可", "予約可", "地元食材"], strengths: "料理の質、法事や接待", weaknesses: "価格が高い、若い人に知られていない" },
     { id: uid(), name: "C：新しくできた焼鳥店", genre: "居酒屋", distance: "徒歩5分", lunchPrice: "", dinnerPrice: 3500, rating: 4.0, reviews: 95, igFollowers: 1800, features: ["写真映えするメニュー", "一人客歓迎"], strengths: "Instagramでの発信、カウンター席", weaknesses: "駐車場なし、席が少ない" }
   ];
+  s.menu = [
+    ["とちぎ和牛の炭火焼き", "料理", 1680, 700, 220],
+    ["自家製餃子", "料理", 480, 110, 600],
+    ["鶏の唐揚げ", "料理", 580, 260, 520],
+    ["刺身の盛り合わせ", "料理", 1280, 640, 160],
+    ["季節野菜のサラダ", "料理", 680, 170, 70],
+    ["だし巻き玉子", "料理", 520, 110, 140],
+    ["もつ煮込み", "料理", 480, 230, 80],
+    ["生ビール", "ドリンク", 580, 200, 900],
+    ["栃木の地酒（グラス）", "ドリンク", 680, 230, 700],
+    ["日替わりランチ定食", "ランチ", 950, 400, 650]
+  ].map(([name, category, price, cost, qty]) => ({ id: uid(), name, category, price, cost, qty }));
+  s.roi = [
+    { id: uid(), month: addMonths(base, -2), measure: "近所へのチラシ・ポスティング", cost: 25000, customers: 18, memo: "2000枚、クーポン回収で計測" },
+    { id: uid(), month: addMonths(base, -2), measure: "グルメサイト・予約サイトに掲載する", cost: 30000, customers: 22, memo: "サイト経由の予約数" },
+    { id: uid(), month: addMonths(base, -1), measure: "Googleマップ（Googleビジネスプロフィール）を整える", cost: 0, customers: 35, memo: "予約時に「何で知りましたか」と質問" },
+    { id: uid(), month: addMonths(base, -1), measure: "近所へのチラシ・ポスティング", cost: 25000, customers: 12, memo: "2回目は反応が下がった" }
+  ];
   s.c3.customerNotes = "仕事帰りの会社員は「車で来られる」「個室」で選んでいる。家族連れは土日の昼が多い。";
   s.post = { channel: "Instagram", purpose: "季節限定", topic: "とちあいかの生いちごサワー", price: "680", point: "栃木県産のいちご「とちあいか」をたっぷり使った季節限定のサワーです", period: "1月〜3月" };
   return s;
@@ -174,6 +196,9 @@ function normalize(data) {
       records: Array.isArray(raw.records) ? raw.records : [],
       competitors: Array.isArray(raw.competitors) ? raw.competitors : [],
       c3: { ...base.c3, ...(raw.c3 || {}) },
+      menu: Array.isArray(raw.menu) ? raw.menu : [],
+      p4: { ...base.p4, ...(raw.p4 || {}) },
+      roi: Array.isArray(raw.roi) ? raw.roi : [],
       post: { ...base.post, ...(raw.post || {}) }
     };
   });
@@ -387,13 +412,13 @@ function monthTasks(s, key) {
   eventsFor((month % 12) + 1, p.genre).slice(0, 2).forEach((e) => {
     tasks.push({ id: `n:${e.name}`, group: "季節の企画", text: `来月の「${e.name}」の写真と告知文を準備`, hint: e.idea });
   });
-  scoreMeasures(p, compBonus(s))
+  scoreMeasures(p, allBonus(s))
     .filter((m) => m.score > 0)
     .slice(0, 5)
     .forEach((m) => {
       m.tasks.forEach((t, i) => tasks.push({ id: `m:${m.id}:${i}`, group: "毎月の作業（おすすめ施策から）", text: t, hint: m.name }));
     });
-  tasks.push({ id: "r:record", group: "振り返り", text: "⑥ 効果測定に今月の数字を記録する", hint: "売上、客数、フォロワー数など" });
+  tasks.push({ id: "r:record", group: "振り返り", text: "⑨ 効果測定に今月の数字を記録する", hint: "売上、客数、フォロワー数など" });
   return tasks;
 }
 
@@ -659,7 +684,7 @@ function renderHome() {
   const s = store();
   const p = s.profile;
   const g = goalCalc(s);
-  const measures = scoreMeasures(p, compBonus(s));
+  const measures = scoreMeasures(p, allBonus(s));
   const key = monthKey();
   const prog = checkProgress(s, key);
   const rec = latestRecord(s);
@@ -667,12 +692,12 @@ function renderHome() {
   $("[data-home-title]").textContent = `${p.name.replace(/^サンプル：/, "")}の集客を、やることリストまで落とし込む。`;
 
   const kpis = [
-    { label: "目標達成に必要な客数", value: g.ok ? `1日 ${fmt(g.dayCustomers)}人` : "—", note: g.ok ? `月 ${fmt(g.monthCustomers)}人／客単価 ${yen(g.avg)}` : "③で目標売上を入れてください" },
+    { label: "目標達成に必要な客数", value: g.ok ? `1日 ${fmt(g.dayCustomers)}人` : "—", note: g.ok ? `月 ${fmt(g.monthCustomers)}人／客単価 ${yen(g.avg)}` : "⑥で目標売上を入れてください" },
     { label: "今月のチェックリスト", value: `${prog.done} / ${prog.total}`, note: `${monthLabel(key)}の実行状況`, pct: prog.total ? prog.done / prog.total : 0 },
     {
       label: "直近の売上",
       value: rec && rec.sales ? yen(num(rec.sales)) : "—",
-      note: rec ? `${monthLabel(rec.month)}${g.ok && rec.sales ? `／目標の${fmt((num(rec.sales) / g.target) * 100)}%` : ""}` : "⑥で記録してください"
+      note: rec ? `${monthLabel(rec.month)}${g.ok && rec.sales ? `／目標の${fmt((num(rec.sales) / g.target) * 100)}%` : ""}` : "⑨で記録してください"
     },
     { label: "最優先の施策", value: measures[0] ? measures[0].name : "—", note: measures[0] ? `優先度 ${measures[0].score}点` : "", small: true }
   ];
@@ -728,7 +753,7 @@ function renderStrategy() {
     return `<div class="funnel-step ${ok ? "ok" : "ng"}"><b>${f.stage}</b><span>${ok ? "対策あり" : "手薄"}</span><small>${esc(f.tip)}</small></div>`;
   }).join("");
 
-  const measures = scoreMeasures(p, compBonus(s));
+  const measures = scoreMeasures(p, allBonus(s));
   $("[data-measures]").innerHTML = measures
     .map(
       (m, i) => `
@@ -817,7 +842,7 @@ function renderGoalResult() {
       <li>リピーターの割合を10ポイント上げると、必要な新規客は月 <b>${fmt(r.newMonth)}人 → ${fmt(r.newMonthRepeatUp)}人</b> に減ります。</li>
       <li>新規客の${fmt(r.lineRate * 100)}%がLINE登録すると、友だちは月に約 <b>${fmt(r.lineMonth)}人</b> 増えます。</li>
     </ul>
-    <p class="note">「仮定」の数字は目安です。⑥で記録した実績に合わせて見直してください。</p>`;
+    <p class="note">「仮定」の数字は目安です。⑨で記録した実績に合わせて見直してください。</p>`;
   el.innerHTML = html;
 }
 
@@ -990,7 +1015,7 @@ function renderProposal() {
   const p = s.profile;
   const w = swot(s);
   const g = goalCalc(s);
-  const measures = scoreMeasures(p, compBonus(s)).slice(0, 5);
+  const measures = scoreMeasures(p, allBonus(s)).slice(0, 5);
   const t = targetsFor(p);
   const now = new Date();
   const months = [0, 1, 2].map((n) => addMonths(monthKey(), n));
@@ -1003,7 +1028,7 @@ function renderProposal() {
     </header>
 
     <section>
-      <h2>1. お店の概要</h2>
+      <h2>#. お店の概要</h2>
       <table class="kv">
         <tr><th>業態・立地</th><td>${esc(p.genre)}／${esc(p.pref)}${esc(p.area)}・${esc(p.location)}</td></tr>
         <tr><th>営業</th><td>${esc(p.timeband)}／${esc(p.seats)}席／月${esc(p.openDays)}日営業</td></tr>
@@ -1013,7 +1038,7 @@ function renderProposal() {
     </section>
 
     <section>
-      <h2>2. 現状の整理</h2>
+      <h2>#. 現状の整理</h2>
       <div class="swot print-swot">
         <div class="swot-box s"><h3>強み</h3>${list(w.S)}</div>
         <div class="swot-box w"><h3>弱み・課題</h3>${list(w.W)}</div>
@@ -1022,17 +1047,20 @@ function renderProposal() {
       </div>
     </section>
 
+    ${proposal3C(s)}
+
     <section>
-      <h2>3. 狙うお客様</h2>
+      <h2>#. 狙うお客様と目指す姿</h2>
+      <p class="pr-position">${esc(positioning(s))}</p>
       <ul>${[...t.chosen, ...t.suggested]
         .map((n) => `<li><b>${esc(n)}</b>：${esc(TARGET_INFO[n].need)}（届け方：${esc(TARGET_INFO[n].where)}）</li>`)
         .join("") || "<li>—</li>"}</ul>
     </section>
 
-    ${proposal3C(s)}
+    ${proposal4P(s)}
 
     <section>
-      <h2>4. 取り組む施策（優先順）</h2>
+      <h2>#. 取り組む施策（優先順）</h2>
       ${measures
         .map(
           (m, i) => `<div class="pr-measure"><h3>${i + 1}. ${esc(m.name)}</h3>
@@ -1043,7 +1071,7 @@ function renderProposal() {
     </section>
 
     <section>
-      <h2>5. 数値目標</h2>
+      <h2>#. 数値目標</h2>
       ${
         g.ok
           ? `<table class="kv">
@@ -1052,12 +1080,12 @@ function renderProposal() {
           <tr><th>うち新規客</th><td>月 ${fmt(g.newMonth)}人</td></tr>
           ${g.current && g.gapSales > 0 ? `<tr><th>今との差</th><td>${yen(g.gapSales)}／月 → 客単価を${yen(g.avg5)}にし、1日あと${fmt(Math.max(g.mixDay, 0), 1)}人</td></tr>` : ""}
         </table>`
-          : "<p>③で目標の月商を入れると表示されます。</p>"
+          : "<p>⑥で目標の月商を入れると表示されます。</p>"
       }
     </section>
 
     <section>
-      <h2>6. これから3か月の販促テーマ</h2>
+      <h2>#. これから3か月の販促テーマ</h2>
       <table class="kv">${months
         .map((k) => {
           const ev = eventsFor(Number(k.split("-")[1]), p.genre);
@@ -1067,10 +1095,14 @@ function renderProposal() {
     </section>
 
     <section>
-      <h2>7. 毎月確認する数字</h2>
-      <p>売上、客数、新規客の数、Googleプロフィールの表示回数、口コミ件数と評価、Instagramのフォロワー数、LINEの友だち数を毎月記録し、施策の効果を確認します。</p>
+      <h2>#. 毎月確認する数字</h2>
+      <p>売上、客数、新規客の数、Googleプロフィールの表示回数、口コミ件数と評価、Instagramのフォロワー数、LINEの友だち数を毎月記録し、施策の効果を確認します。施策ごとに費用と来店数を記録し、費用対効果の低いものは見直します。</p>
+      ${proposalRoi(s)}
     </section>
   `;
+  /* 見出しに通し番号をふる（競合などが未入力の項目は出さないため） */
+  let n = 0;
+  $$("[data-proposal] h2").forEach((h) => (h.textContent = h.textContent.replace(/^#\./, () => `${++n}.`)));
 }
 
 /* ---------------- 全体の再描画 ---------------- */
@@ -1083,6 +1115,8 @@ function renderAll({ forms = true } = {}) {
     renderPostForm();
     renderRecordForm();
     renderCompForm();
+    renderMenuForm();
+    renderRoiForm();
   }
   renderHome();
   renderStrategy();
@@ -1091,6 +1125,9 @@ function renderAll({ forms = true } = {}) {
   renderPostResult();
   renderRecords();
   renderCompetitors();
+  renderMenu();
+  renderP4();
+  renderRoi();
   renderProposal();
 }
 
@@ -1284,6 +1321,7 @@ function bind() {
 
   $("[data-action='print']").addEventListener("click", () => window.print());
   bindCompetitors();
+  bindStrategy();
 }
 
 function fallbackCopy(text, done) {

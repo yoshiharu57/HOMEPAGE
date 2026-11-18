@@ -7,7 +7,7 @@
 /* 価格差をどこから「高い／安い」とみなすか */
 const PRICE_GAP = 0.15;
 
-/* ⑥の記録から、空欄でない一番新しい値を取る */
+/* ⑨の記録から、空欄でない一番新しい値を取る */
 function selfMetrics(s) {
   const rows = [...s.records].sort((a, b) => (a.month < b.month ? 1 : -1));
   const pick = (id) => {
@@ -86,6 +86,7 @@ function compInsights(s) {
     if (d <= -0.2) {
       items.push({ type: "bad", text: `Googleの評価が競合平均より${fmt(-d, 1)}低い（自店★${fmt(me.rating, 1)}／平均★${fmt(avg.rating, 1)}）。低評価の口コミの内容を確認し、返信と改善を。` });
       addBonus("review", 8, "評価が競合より低い");
+      addBonus("service", 12, "評価が競合より低く、お店の中の体験に課題がありそう");
     } else if (d >= 0.2) {
       items.push({ type: "good", text: `Googleの評価は競合平均より高い（自店★${fmt(me.rating, 1)}／平均★${fmt(avg.rating, 1)}）。写真と口コミで目立たせましょう。` });
     }
@@ -194,7 +195,7 @@ function renderCompetitors() {
     ...sw.S.slice(0, 3)
   ]
     .map((x) => `<li>${esc(x)}</li>`)
-    .join("")}</ul>${me.rating === null && me.reviews === null ? `<p class="note">評価や口コミ件数は⑥効果測定の最新の記録から取ります。</p>` : ""}`;
+    .join("")}</ul>${me.rating === null && me.reviews === null ? `<p class="note">評価や口コミ件数は⑨効果測定の最新の記録から取ります。</p>` : ""}`;
   $("[data-c3-competitor]").innerHTML = ins.comps.length
     ? `<ul>${ins.comps.map((c) => `<li><b>${esc(c.name)}</b>：${esc(c.strengths || "—")}</li>`).join("")}</ul>`
     : `<p class="empty">下の「競合店を追加」から、近くのお店を2〜3店入れてください。</p>`;
@@ -249,7 +250,7 @@ function renderPositionMap(s, ins) {
     .map((r) => ({ name: r.name.replace(/（自店）$/, ""), self: !!r.self, x: num(r[key]), y: num(r.rating) }))
     .filter((d) => d.x !== null && d.y !== null);
   if (pts.length < 2) {
-    el.innerHTML = `<p class="empty">自店と競合の「${dinnerSide ? "ディナー" : "ランチ"}の客単価」と「Googleの評価」がそろうと、マップを表示します。自店の評価は⑥効果測定に記録してください。</p>`;
+    el.innerHTML = `<p class="empty">自店と競合の「${dinnerSide ? "ディナー" : "ランチ"}の客単価」と「Googleの評価」がそろうと、マップを表示します。自店の評価は⑨効果測定に記録してください。</p>`;
     return;
   }
   const W = 560;
@@ -297,7 +298,7 @@ function proposal3C(s) {
   const ins = compInsights(s);
   if (!ins.comps.length) return "";
   return `<section>
-      <h2>3-2. 競合との比較</h2>
+      <h2>#. 競合との比較</h2>
       <table class="kv">${ins.comps
         .map(
           (c) => `<tr><th>${esc(c.name)}</th><td>${esc(c.distance || "")} ／ ディナー${yen(c.dinnerPrice)} ／ ★${c.rating === null ? "—" : fmt(c.rating, 1)}・口コミ${

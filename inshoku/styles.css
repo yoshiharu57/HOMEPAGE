@@ -1389,3 +1389,274 @@ textarea {
 .compare .row-actions {
   flex-direction: column;
 }
+
+/* ---------- メニュー分析 ---------- */
+.mtype-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mtype {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border-left: 5px solid;
+}
+
+.mtype h3 {
+  font-size: 15px;
+}
+
+.mtype h3 small {
+  margin-left: 8px;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.mtype .items {
+  margin: 4px 0;
+  font-weight: 700;
+}
+
+.mtype .act {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.mtype.star,
+.mtag.star {
+  background: var(--soft-green);
+  border-color: var(--green);
+}
+
+.mtype.plow,
+.mtag.plow {
+  background: var(--soft-yellow);
+  border-color: var(--yellow);
+}
+
+.mtype.puzzle,
+.mtag.puzzle {
+  background: var(--soft-blue);
+  border-color: var(--blue);
+}
+
+.mtype.dog,
+.mtag.dog {
+  background: var(--soft-red);
+  border-color: var(--red);
+}
+
+.mtag {
+  display: inline-block;
+  padding: 0 8px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.abc {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 12px;
+  background: var(--line);
+}
+
+.abc.A {
+  background: var(--accent);
+  color: #fff;
+}
+
+.abc.B {
+  background: var(--soft-accent);
+  color: var(--accent);
+}
+
+.menu-table td.warn {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.menu-table th small,
+.roi-table th small {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.menu-form {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.menu-form h2,
+.menu-form .form-actions {
+  grid-column: 1 / -1;
+}
+
+.map .q.star {
+  fill: var(--soft-green);
+}
+
+.map .q.dog {
+  fill: var(--soft-red);
+  opacity: 0.6;
+}
+
+.map .pt.star circle {
+  fill: var(--green);
+  stroke: var(--green);
+}
+
+.map .pt.plow circle {
+  fill: #fff;
+  stroke: var(--yellow);
+}
+
+.map .pt.puzzle circle {
+  fill: #fff;
+  stroke: var(--blue);
+}
+
+.map .pt.dog circle {
+  fill: #fff;
+  stroke: var(--red);
+}
+
+/* ---------- 4P ---------- */
+.p4-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.p4 {
+  border-top: 5px solid var(--accent);
+}
+
+.p4.price {
+  border-top-color: var(--green);
+}
+
+.p4.place {
+  border-top-color: var(--blue);
+}
+
+.p4.promotion {
+  border-top-color: var(--yellow);
+}
+
+.p4 h2 small {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.p4 h3 {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.p4 ul {
+  margin: 4px 0 10px;
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+.p4 ul.plan li {
+  font-weight: 700;
+}
+
+/* ---------- 費用対効果 ---------- */
+.roi-rate {
+  margin: 12px 0 4px;
+}
+
+.roi-rate input {
+  width: 110px;
+}
+
+.verdict {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.verdict.good {
+  background: var(--soft-green);
+  color: var(--green);
+}
+
+.verdict.info {
+  background: var(--soft-blue);
+  color: var(--blue);
+}
+
+.verdict.bad {
+  background: var(--soft-red);
+  color: var(--red);
+}
+
+/* ---------- 提案書の追加部品 ---------- */
+.pr-position {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-left: 4px solid var(--accent);
+  background: var(--soft-accent);
+  font-weight: 800;
+}
+
+.pr-sub {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .p4-grid,
+  .mtype-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.group-pick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.chip-btn {
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.chip-btn.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
