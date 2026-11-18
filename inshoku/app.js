@@ -91,7 +91,9 @@ function blankStore(name = "新しい店舗") {
     goal: { targetSales: "", currentSales: "", avgSpend: "", lunchShare: 40, repeatRate: 40, lineRate: 20 },
     checks: {},
     records: [],
-    post: { channel: "Instagram", purpose: "新メニュー", topic: "", price: "", point: "", period: "" }
+    post: { channel: "Instagram", purpose: "新メニュー", topic: "", price: "", point: "", period: "" },
+    competitors: [],
+    c3: { customerNotes: "" }
   };
 }
 
@@ -134,6 +136,12 @@ function sampleStore() {
     lineFriends,
     memo: ""
   }));
+  s.competitors = [
+    { id: uid(), name: "A：駅前のチェーン居酒屋", genre: "居酒屋", distance: "車で5分", lunchPrice: "", dinnerPrice: 2800, rating: 3.6, reviews: 240, igFollowers: 3200, features: ["予約可", "個室・宴会可", "深夜営業"], strengths: "安さ、飲み放題、ネット予約", weaknesses: "料理が画一的、地元感がない" },
+    { id: uid(), name: "B：近所の老舗の和食店", genre: "和食・割烹", distance: "徒歩8分", lunchPrice: 1300, dinnerPrice: 5000, rating: 4.3, reviews: 120, igFollowers: 300, features: ["駐車場あり", "個室・宴会可", "予約可", "地元食材"], strengths: "料理の質、法事や接待", weaknesses: "価格が高い、若い人に知られていない" },
+    { id: uid(), name: "C：新しくできた焼鳥店", genre: "居酒屋", distance: "徒歩5分", lunchPrice: "", dinnerPrice: 3500, rating: 4.0, reviews: 95, igFollowers: 1800, features: ["写真映えするメニュー", "一人客歓迎"], strengths: "Instagramでの発信、カウンター席", weaknesses: "駐車場なし、席が少ない" }
+  ];
+  s.c3.customerNotes = "仕事帰りの会社員は「車で来られる」「個室」で選んでいる。家族連れは土日の昼が多い。";
   s.post = { channel: "Instagram", purpose: "季節限定", topic: "とちあいかの生いちごサワー", price: "680", point: "栃木県産のいちご「とちあいか」をたっぷり使った季節限定のサワーです", period: "1月〜3月" };
   return s;
 }
@@ -164,6 +172,8 @@ function normalize(data) {
       goal: { ...base.goal, ...(raw.goal || {}) },
       checks: raw.checks || {},
       records: Array.isArray(raw.records) ? raw.records : [],
+      competitors: Array.isArray(raw.competitors) ? raw.competitors : [],
+      c3: { ...base.c3, ...(raw.c3 || {}) },
       post: { ...base.post, ...(raw.post || {}) }
     };
   });
@@ -204,9 +214,9 @@ function avgSpend(s) {
   return lunch * share + dinner * (1 - share);
 }
 
-function scoreMeasures(p) {
+function scoreMeasures(p, extra = {}) {
   return MEASURES.map((m) => {
-    const rules = m.rules(p);
+    const rules = m.rules(p).concat(extra[m.id] || []);
     let score = rules.reduce((sum, [pt]) => sum + pt, 0);
     const reasons = rules.filter(([pt]) => pt > 0).map(([, r]) => r);
     const cautions = rules.filter(([pt]) => pt < 0).map(([, r]) => r);
@@ -310,6 +320,10 @@ function swot(s) {
   if (has(p.issues, "近くに競合が増えた")) T.push("近くの競合と比べられる。Googleマップの写真と口コミで差がつく");
   if (has(p.issues, "人手が足りない")) T.push("人手不足。手間の少ない施策から始める");
   if (has(p.issues, "発信する時間がない")) T.push("発信が止まると効果も止まる。まとめて準備する仕組みが必要");
+  compInsights(s).items.forEach((i) => {
+    if (i.type === "good") O.push(`競合比較：${i.text}`);
+    if (i.type === "bad") T.push(`競合比較：${i.text}`);
+  });
   T.push("食材費や光熱費の値上がり。客数だけでなく客単価も見る");
 
   return { S, W, O, T };
@@ -373,7 +387,7 @@ function monthTasks(s, key) {
   eventsFor((month % 12) + 1, p.genre).slice(0, 2).forEach((e) => {
     tasks.push({ id: `n:${e.name}`, group: "季節の企画", text: `来月の「${e.name}」の写真と告知文を準備`, hint: e.idea });
   });
-  scoreMeasures(p)
+  scoreMeasures(p, compBonus(s))
     .filter((m) => m.score > 0)
     .slice(0, 5)
     .forEach((m) => {
@@ -645,7 +659,7 @@ function renderHome() {
   const s = store();
   const p = s.profile;
   const g = goalCalc(s);
-  const measures = scoreMeasures(p);
+  const measures = scoreMeasures(p, compBonus(s));
   const key = monthKey();
   const prog = checkProgress(s, key);
   const rec = latestRecord(s);
@@ -714,7 +728,7 @@ function renderStrategy() {
     return `<div class="funnel-step ${ok ? "ok" : "ng"}"><b>${f.stage}</b><span>${ok ? "対策あり" : "手薄"}</span><small>${esc(f.tip)}</small></div>`;
   }).join("");
 
-  const measures = scoreMeasures(p);
+  const measures = scoreMeasures(p, compBonus(s));
   $("[data-measures]").innerHTML = measures
     .map(
       (m, i) => `
@@ -976,7 +990,7 @@ function renderProposal() {
   const p = s.profile;
   const w = swot(s);
   const g = goalCalc(s);
-  const measures = scoreMeasures(p).slice(0, 5);
+  const measures = scoreMeasures(p, compBonus(s)).slice(0, 5);
   const t = targetsFor(p);
   const now = new Date();
   const months = [0, 1, 2].map((n) => addMonths(monthKey(), n));
@@ -1014,6 +1028,8 @@ function renderProposal() {
         .map((n) => `<li><b>${esc(n)}</b>：${esc(TARGET_INFO[n].need)}（届け方：${esc(TARGET_INFO[n].where)}）</li>`)
         .join("") || "<li>—</li>"}</ul>
     </section>
+
+    ${proposal3C(s)}
 
     <section>
       <h2>4. 取り組む施策（優先順）</h2>
@@ -1066,6 +1082,7 @@ function renderAll({ forms = true } = {}) {
     renderGoalForm();
     renderPostForm();
     renderRecordForm();
+    renderCompForm();
   }
   renderHome();
   renderStrategy();
@@ -1073,6 +1090,7 @@ function renderAll({ forms = true } = {}) {
   renderCalendar();
   renderPostResult();
   renderRecords();
+  renderCompetitors();
   renderProposal();
 }
 
@@ -1265,6 +1283,7 @@ function bind() {
   });
 
   $("[data-action='print']").addEventListener("click", () => window.print());
+  bindCompetitors();
 }
 
 function fallbackCopy(text, done) {

@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#b45309" />
     <link rel="stylesheet" href="./styles.css?v=20261118" />
     <script src="./data.js?v=20261118" defer></script>
+    <script src="./comp.js?v=20261118" defer></script>
     <script src="./app.js?v=20261118" defer></script>
   </head>
   <body>
@@ -42,6 +43,7 @@
       <button type="button" class="tab is-active" data-view="home">ホーム</button>
       <button type="button" class="tab" data-view="profile">① 店舗情報</button>
       <button type="button" class="tab" data-view="strategy">② 戦略・施策</button>
+      <button type="button" class="tab" data-view="compete">②-2 競合との比較</button>
       <button type="button" class="tab" data-view="goal">③ 目標の逆算</button>
       <button type="button" class="tab" data-view="calendar">④ 販促カレンダー</button>
       <button type="button" class="tab" data-view="posts">⑤ 投稿文づくり</button>
@@ -73,6 +75,7 @@
           <ol class="steps">
             <li><b>① 店舗情報</b>：業態、立地、客単価、困っていることを入力します。</li>
             <li><b>② 戦略・施策</b>：お店の強みと弱み、狙う客層、効果が出やすい施策を優先順に表示します。</li>
+            <li><b>②-2 競合との比較</b>：近くの競合店と価格、評価、口コミ、特徴を比べて、自店が選ばれる理由を決めます。</li>
             <li><b>③ 目標の逆算</b>：目標の売上から、1日に必要な客数や新規客の数を計算します。</li>
             <li><b>④ 販促カレンダー</b>：季節のイベントに合わせて、月ごとのやることをチェックリストにします。</li>
             <li><b>⑤ 投稿文づくり</b>：Instagram、Googleマップ、LINEの投稿文をひな形から作ります。</li>
@@ -118,6 +121,53 @@
           <h2>おすすめ施策（優先順）</h2>
           <div class="measure-list" data-measures></div>
         </section>
+      </section>
+
+      <!-- 競合との比較（3C分析） -->
+      <section class="view" data-view-panel="compete">
+        <div class="view-head">
+          <p class="eyebrow">②-2 競合との比較（3C分析）</p>
+          <h1>お客様・自店・競合を並べて、選ばれる理由を決める。</h1>
+          <p class="lead">近くの競合店を2〜3店入れてください。Googleマップで見られる評価、口コミ件数、価格だけでも十分に比べられます。</p>
+        </div>
+        <div class="c3-grid">
+          <section class="panel c3 customer">
+            <h2>お客様（Customer）</h2>
+            <div data-c3-customer></div>
+            <label class="field">
+              <span>お客様の声・求めていること</span>
+              <textarea rows="3" data-comp-notes placeholder="例：車で来られる店を探している、個室で落ち着いて飲みたい"></textarea>
+            </label>
+          </section>
+          <section class="panel c3 company">
+            <h2>自店（Company）</h2>
+            <div data-c3-company></div>
+          </section>
+          <section class="panel c3 competitor">
+            <h2>競合（Competitor）</h2>
+            <div data-c3-competitor></div>
+          </section>
+        </div>
+        <div class="grid-2">
+          <section class="panel">
+            <h2>比べてわかったこと</h2>
+            <div data-c3-insights></div>
+            <p class="note">ここでわかった課題は、②の施策の優先順位にも反映されます。</p>
+          </section>
+          <section class="panel">
+            <h2>差別化の方向（目指す姿）</h2>
+            <div data-c3-position></div>
+          </section>
+        </div>
+        <section class="panel">
+          <h2>ポジションマップ（価格と評価）</h2>
+          <div class="chart map" data-c3-map></div>
+        </section>
+        <section class="panel">
+          <h2>比較表</h2>
+          <div class="table-wrap" data-c3-table></div>
+        </section>
+        <form class="panel form-grid" data-comp-form autocomplete="off"></form>
       </section>
 
       <!-- 目標 -->

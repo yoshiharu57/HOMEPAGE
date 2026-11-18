@@ -1205,3 +1205,187 @@ textarea {
     print-color-adjust: exact;
   }
 }
+
+/* ---------- 競合との比較（3C分析） ---------- */
+.c3-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.c3 {
+  border-top: 5px solid var(--accent);
+}
+
+.c3.customer {
+  border-top-color: var(--blue);
+}
+
+.c3.company {
+  border-top-color: var(--green);
+}
+
+.c3 ul {
+  margin: 0 0 10px;
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+.insights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.insights li {
+  padding: 8px 10px 8px 34px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  position: relative;
+}
+
+.insights li::before {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  font-weight: 800;
+}
+
+.insights .good {
+  background: var(--soft-green);
+}
+
+.insights .good::before {
+  content: "◎";
+  color: var(--green);
+}
+
+.insights .bad {
+  background: var(--soft-red);
+}
+
+.insights .bad::before {
+  content: "！";
+  color: var(--red);
+}
+
+.insights .info {
+  background: var(--soft-blue);
+}
+
+.insights .info::before {
+  content: "i";
+  color: var(--blue);
+}
+
+.position {
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-left: 5px solid var(--accent);
+  background: var(--soft-accent);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+[data-c3-position] p + p {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.map svg {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.map .avg {
+  stroke: var(--muted);
+  stroke-dasharray: 4 4;
+}
+
+.map .quad {
+  fill: var(--muted);
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.map .pt circle {
+  fill: #fff;
+  stroke: var(--blue);
+  stroke-width: 3;
+}
+
+.map .pt.self circle {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+.map .pt text {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 3px;
+}
+
+.compare th small {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.compare tr.self {
+  background: var(--soft-accent);
+}
+
+.compare td.best {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.compare .memo {
+  min-width: 200px;
+}
+
+.mini {
+  display: inline-block;
+  margin: 0 4px 4px 0;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 11px;
+  background: #fff;
+}
+
+.mini.only {
+  border-color: var(--green);
+  color: var(--green);
+  font-weight: 700;
+}
+
+.compare .plus,
+.compare .minus {
+  display: block;
+  font-size: 12px;
+}
+
+.compare .plus {
+  color: var(--green);
+}
+
+.compare .minus {
+  color: var(--red);
+}
+
+@media (max-width: 900px) {
+  .c3-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.compare .row-actions {
+  flex-direction: column;
+}
