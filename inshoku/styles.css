@@ -1660,3 +1660,17 @@ textarea {
   color: #fff;
   font-weight: 700;
 }
+
+/* ---------- 社名 ---------- */
+.brand-mark {
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.pr-head .pr-from {
+  margin-top: 8px;
+  text-align: right;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+}

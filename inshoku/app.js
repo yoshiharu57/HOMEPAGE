@@ -1025,6 +1025,7 @@ function renderProposal() {
     <header class="pr-head">
       <p>${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日</p>
       <h1>${esc(name)} 様<br />集客・マーケティング戦略のご提案</h1>
+      <p class="pr-from">${esc(COMPANY_NAME)}</p>
     </header>
 
     <section>
@@ -1149,7 +1150,10 @@ function bind() {
 
   document.addEventListener("click", (e) => {
     const go = e.target.closest("[data-goto]");
-    if (go) showView(go.dataset.goto);
+    if (go) {
+      if (go.tagName === "A") e.preventDefault();
+      showView(go.dataset.goto);
+    }
 
     const copy = e.target.closest("[data-copy]");
     if (copy) {
