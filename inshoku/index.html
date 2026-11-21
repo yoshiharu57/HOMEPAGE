@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>飲食店マーケティング戦略 | とちっコぐらし マーケティング部</title>
+    <meta
+      name="description"
+      content="飲食店向けのマーケティング戦略づくりアプリ。店舗の現状分析、競合比較、メニュー分析、4P、集客施策の優先順位、売上目標の逆算、販促カレンダー、投稿文の作成、効果測定、提案書の印刷まで。"
+    />
+    <meta name="theme-color" content="#b45309" />
+    <link rel="stylesheet" href="./styles.css?v=20261118" />
+    <script src="./data.js?v=20261118" defer></script>
+    <script src="./comp.js?v=20261118" defer></script>
+    <script src="./strategy.js?v=20261118" defer></script>
+    <script src="./app.js?v=20261118" defer></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="#" data-goto="home" aria-label="とちっコぐらし マーケティング部 飲食店マーケティング戦略 ホームへ">
+        <span class="brand-mark" aria-hidden="true">とち</span>
+        <span>
+          <strong>飲食店マーケティング戦略</strong>
+          <small>とちっコぐらし マーケティング部</small>
+        </span>
+      </a>
+
+      <div class="store-switch">
+        <label>
+          <span>店舗</span>
+          <select data-store-select aria-label="表示する店舗"></select>
+        </label>
+        <button type="button" class="button ghost" data-action="new-store">＋ 店舗を追加</button>
+      </div>
+
+      <div class="header-tools">
+        <button type="button" class="button ghost" data-action="export">バックアップ</button>
+        <button type="button" class="button ghost" data-action="import">読込</button>
+        <input type="file" accept="application/json" hidden data-import-file />
+      </div>
+    </header>
+
+    <nav class="app-nav" aria-label="画面切り替え">
+      <button type="button" class="tab is-active" data-view="home">ホーム</button>
+      <button type="button" class="tab" data-view="profile">① 店舗情報</button>
+      <button type="button" class="tab" data-view="strategy">② 戦略・施策</button>
+      <button type="button" class="tab" data-view="compete">③ 競合との比較</button>
+      <button type="button" class="tab" data-view="menu">④ メニュー分析</button>
+      <button type="button" class="tab" data-view="p4">⑤ 4Pのまとめ</button>
+      <button type="button" class="tab" data-view="goal">⑥ 目標の逆算</button>
+      <button type="button" class="tab" data-view="calendar">⑦ 販促カレンダー</button>
+      <button type="button" class="tab" data-view="posts">⑧ 投稿文づくり</button>
+      <button type="button" class="tab" data-view="records">⑨ 効果測定・費用対効果</button>
+      <button type="button" class="tab" data-view="proposal">提案書</button>
+    </nav>
+
+    <main class="app-main">
+      <!-- ホーム -->
+      <section class="view is-active" data-view-panel="home">
+        <div class="view-head">
+          <p class="eyebrow">ホーム</p>
+          <h1 data-home-title>お店の戦略を、やることリストまで落とし込む。</h1>
+          <p class="lead">①〜⑨の順に進めると、現状分析から4P、数値目標、実行計画までの戦略ができあがります。入力した内容はこのブラウザに保存されます。</p>
+        </div>
+        <div class="kpi-row" data-home-kpi></div>
+        <div class="grid-2">
+          <section class="panel">
+            <h2>まず取り組む施策 TOP3</h2>
+            <div data-home-top></div>
+          </section>
+          <section class="panel">
+            <h2>今月やること</h2>
+            <div data-home-todo></div>
+          </section>
+        </div>
+        <section class="panel steps-panel">
+          <h2>使い方</h2>
+          <ol class="steps">
+            <li><b>① 店舗情報</b>：業態、立地、客単価、困っていることを入力します。</li>
+            <li><b>② 戦略・施策</b>：お店の強みと弱み、狙う客層、効果が出やすい施策を優先順に表示します。</li>
+            <li><b>③ 競合との比較</b>：近くの競合店と価格、評価、口コミ、特徴を比べて、自店が選ばれる理由を決めます。</li>
+            <li><b>④ メニュー分析</b>：メニューごとの売上と利益から、看板にするもの、値上げや原価を見直すもの、入れ替えるものを分けます。</li>
+            <li><b>⑤ 4Pのまとめ</b>：商品・価格・場所・販促の方針を1枚にまとめます。</li>
+            <li><b>⑥ 目標の逆算</b>：目標の売上から、1日に必要な客数や新規客の数を計算します。</li>
+            <li><b>⑦ 販促カレンダー</b>：季節のイベントに合わせて、月ごとのやることをチェックリストにします。</li>
+            <li><b>⑧ 投稿文づくり</b>：Instagram、Googleマップ、LINEの投稿文をひな形から作ります。</li>
+            <li><b>⑨ 効果測定・費用対効果</b>：毎月の数字を記録し、施策ごとに費用と効果を比べて、続けるかどうかを判断します。</li>
+            <li><b>提案書</b>：ここまでの内容を1枚にまとめて印刷やPDF保存ができます。</li>
+          </ol>
+        </section>
+      </section>
+
+      <!-- 店舗情報 -->
+      <section class="view" data-view-panel="profile">
+        <div class="view-head">
+          <p class="eyebrow">① 店舗情報</p>
+          <h1>お店のことを教えてください。</h1>
+          <p class="lead">わかる範囲で大丈夫です。入力するとすぐに保存され、②以降の内容に反映されます。</p>
+        </div>
+        <form class="panel form-grid" data-profile-form autocomplete="off"></form>
+        <div class="danger-zone">
+          <button type="button" class="button danger" data-action="delete-store">この店舗を削除</button>
+        </div>
+      </section>
+
+      <!-- 戦略 -->
+      <section class="view" data-view-panel="strategy">
+        <div class="view-head">
+          <p class="eyebrow">② 戦略・施策</p>
+          <h1>お店の現状と、効果が出やすい施策。</h1>
+          <p class="lead">店舗情報から自動で整理しています。点数は「困りごと」「今の対策状況」「予算と時間」から計算した優先度です。</p>
+        </div>
+        <div class="grid-2">
+          <section class="panel">
+            <h2>現状の整理（強み・弱み・機会・注意点）</h2>
+            <div class="swot" data-swot></div>
+          </section>
+          <section class="panel">
+            <h2>狙う客層</h2>
+            <div data-targets></div>
+            <h2 class="mt">集客の流れ（どこが手薄か）</h2>
+            <div class="funnel" data-funnel></div>
+          </section>
+        </div>
+        <section class="panel">
+          <h2>おすすめ施策（優先順）</h2>
+          <div class="measure-list" data-measures></div>
+        </section>
+      </section>
+
+      <!-- 競合との比較（3C分析） -->
+      <section class="view" data-view-panel="compete">
+        <div class="view-head">
+          <p class="eyebrow">③ 競合との比較（3C分析）</p>
+          <h1>お客様・自店・競合を並べて、選ばれる理由を決める。</h1>
+          <p class="lead">近くの競合店を2〜3店入れてください。Googleマップで見られる評価、口コミ件数、価格だけでも十分に比べられます。</p>
+        </div>
+        <div class="c3-grid">
+          <section class="panel c3 customer">
+            <h2>お客様（Customer）</h2>
+            <div data-c3-customer></div>
+            <label class="field">
+              <span>お客様の声・求めていること</span>
+              <textarea rows="3" data-comp-notes placeholder="例：車で来られる店を探している、個室で落ち着いて飲みたい"></textarea>
+            </label>
+          </section>
+          <section class="panel c3 company">
+            <h2>自店（Company）</h2>
+            <div data-c3-company></div>
+          </section>
+          <section class="panel c3 competitor">
+            <h2>競合（Competitor）</h2>
+            <div data-c3-competitor></div>
+          </section>
+        </div>
+        <div class="grid-2">
+          <section class="panel">
+            <h2>比べてわかったこと</h2>
+            <div data-c3-insights></div>
+            <p class="note">ここでわかった課題は、②の施策の優先順位にも反映されます。</p>
+          </section>
+          <section class="panel">
+            <h2>差別化の方向（目指す姿）</h2>
+            <div data-c3-position></div>
+          </section>
+        </div>
+        <section class="panel">
+          <h2>ポジションマップ（価格と評価）</h2>
+          <div class="chart map" data-c3-map></div>
+        </section>
+        <section class="panel">
+          <h2>比較表</h2>
+          <div class="table-wrap" data-c3-table></div>
+        </section>
+        <form class="panel form-grid" data-comp-form autocomplete="off"></form>
+      </section>
+
+      <!-- メニュー分析 -->
+      <section class="view" data-view-panel="menu">
+        <div class="view-head">
+          <p class="eyebrow">④ メニュー分析</p>
+          <h1>どのメニューで稼ぎ、どれを見直すか。</h1>
+          <p class="lead">売上の大きいメニューから10品ほど、売値・原価・月の販売数を入れてください。売れ筋と利益の両方から4つに分けます。</p>
+        </div>
+        <div class="kpi-row" data-menu-kpi></div>
+        <section class="panel">
+          <h2>メニューの4分類と、やること</h2>
+          <div class="mtype-grid" data-menu-types></div>
+        </section>
+        <section class="panel">
+          <h2>人気と利益のマップ</h2>
+          <div class="chart map" data-menu-matrix></div>
+        </section>
+        <section class="panel">
+          <h2>メニュー一覧（売上の大きい順）</h2>
+          <div class="table-wrap" data-menu-table></div>
+        </section>
+        <form class="panel form-grid menu-form" data-menu-form autocomplete="off"></form>
+      </section>
+
+      <!-- 4P -->
+      <section class="view" data-view-panel="p4">
+        <div class="view-head">
+          <p class="eyebrow">⑤ 4Pのまとめ</p>
+          <h1>商品・価格・場所・販促の方針を1枚に。</h1>
+          <p class="lead">①〜④の内容から「今の状態」と「おすすめの方針」を出しています。お店の方針を書き込むと、提案書に載ります。</p>
+        </div>
+        <section class="panel">
+          <h2>目指す姿</h2>
+          <p class="position" data-p4-position></p>
+        </section>
+        <div class="p4-grid" data-p4-grid></div>
+      </section>
+
+      <!-- 目標 -->
+      <section class="view" data-view-panel="goal">
+        <div class="view-head">
+          <p class="eyebrow">⑥ 目標の逆算</p>
+          <h1>目標の売上から、必要な客数を逆算。</h1>
+          <p class="lead">「仮定」の数字は一般的な目安として入れています。お店の実績に合わせて変えてください。</p>
+        </div>
+        <div class="grid-2">
+          <form class="panel form-grid one-col" data-goal-form autocomplete="off"></form>
+          <section class="panel">
+            <h2>計算結果</h2>
+            <div data-goal-result></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- カレンダー -->
+      <section class="view" data-view-panel="calendar">
+        <div class="view-head row">
+          <div>
+            <p class="eyebrow">⑦ 販促カレンダー</p>
+            <h1>季節に合わせて、月ごとにやることを決める。</h1>
+          </div>
+          <label class="inline-field">
+            <span>表示する月</span>
+            <input type="month" data-cal-month />
+          </label>
+        </div>
+        <section class="panel">
+          <h2>今月の販促テーマ</h2>
+          <div class="event-grid" data-cal-events></div>
+        </section>
+        <section class="panel">
+          <h2>実行チェックリスト</h2>
+          <p class="note">終わったらチェックを入れてください。進み具合はホームに表示されます。</p>
+          <div data-cal-tasks></div>
+        </section>
+      </section>
+
+      <!-- 投稿文 -->
+      <section class="view" data-view-panel="posts">
+        <div class="view-head">
+          <p class="eyebrow">⑧ 投稿文づくり</p>
+          <h1>投稿文をひな形から作る。</h1>
+          <p class="lead">内容を入れると3パターンの文面ができます。コピーして、写真に合わせて少し手直ししてから投稿してください。</p>
+        </div>
+        <div class="grid-2">
+          <form class="panel form-grid one-col" data-post-form autocomplete="off"></form>
+          <section class="panel">
+            <h2>できた文面</h2>
+            <div data-post-result></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- 効果測定 -->
+      <section class="view" data-view-panel="records">
+        <div class="view-head">
+          <p class="eyebrow">⑨ 効果測定</p>
+          <h1>毎月の数字を記録して、施策の効果を見る。</h1>
+          <p class="lead">月に1回、わかる数字だけ入れてください。空欄でも大丈夫です。下の「施策の費用対効果」で、施策ごとに続けるかどうかも判断できます。</p>
+        </div>
+        <section class="panel">
+          <h2>今月の数字を記録</h2>
+          <form class="form-grid record-form" data-record-form autocomplete="off"></form>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <h2>推移</h2>
+            <select data-chart-metric aria-label="グラフに表示する項目"></select>
+          </div>
+          <div class="chart" data-chart></div>
+        </section>
+        <section class="panel">
+          <h2>記録一覧</h2>
+          <div class="table-wrap" data-record-table></div>
+        </section>
+        <section class="panel">
+          <h2>施策の費用対効果</h2>
+          <p class="note">施策ごとに「かけた費用」と「その施策で来たお客様の数」を記録します。来た人数は、クーポンの回収数や、予約のときに「何で知りましたか」と聞いて数えます。</p>
+          <form class="form-grid record-form" data-roi-form autocomplete="off"></form>
+          <label class="inline-field roi-rate"><span>計算に使う原価率（%）</span><input type="number" min="0" max="100" step="0.1" data-roi-rate /></label>
+          <h3 class="task-group">施策ごとの判定</h3>
+          <div class="table-wrap" data-roi-summary></div>
+          <h3 class="task-group">記録</h3>
+          <div class="table-wrap" data-roi-list></div>
+        </section>
+      </section>
+
+      <!-- 提案書 -->
+      <section class="view" data-view-panel="proposal">
+        <div class="view-head row no-print">
+          <div>
+            <p class="eyebrow">提案書</p>
+            <h1>ここまでの内容を1枚にまとめる。</h1>
+          </div>
+          <button type="button" class="button primary" data-action="print">印刷・PDF保存</button>
+        </div>
+        <article class="proposal" data-proposal></article>
+      </section>
+    </main>
+
+    <div class="toast" data-toast role="status" aria-live="polite"></div>
+  </body>
+</html>
